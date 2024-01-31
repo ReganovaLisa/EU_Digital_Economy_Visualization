@@ -4006,13 +4006,19 @@ input, select, textarea {
 		background-color: #1d242a;
 	}
 
-	.tooltip {
-		font-family: 'Fira Sans', serif;
-		font: 16px serif;
-		position: absolute;
-		z-index: 10;
-		opacity: 0;
-		background: white;
-		color: #000;
-		border: solid 1px #222;
-	  }
+	.float{
+		position:fixed;
+		width:60px;
+		height:60px;
+		bottom:40px;
+		right:40px;
+		background-color:#0C9;
+		color:#FFF;
+		border-radius:50px;
+		text-align:center;
+		box-shadow: 2px 2px 3px #999;
+	}
+	
+	.my-float{
+		margin-top:22px;
+	}
