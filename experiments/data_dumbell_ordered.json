@@ -1,0 +1,134 @@
+[
+    ["Austria", {
+       "males":68.71
+      ,"females":60.67
+      }],
+    ["Türkiye", {
+       "males":36.81
+      ,"females":29.43
+      }],
+    ["Luxembourg", {
+       "males":63.6
+      ,"females":56.56
+      }],
+    ["Germany", {
+       "males":55.14
+      ,"females":49.3
+      }],
+    ["Switzerland", {
+       "males":79.29
+      ,"females":75.77
+      }],
+    ["Serbia", {
+       "males":34.59
+      ,"females":31.1
+      }],
+    ["Montenegro", {
+       "males":53.49
+      ,"females":50.04
+      }],
+    ["Italy", {
+       "males":47.36
+      ,"females":44.16
+      }],
+    ["Denmark", {
+       "males":71.16
+      ,"females":68.07
+      }],
+    ["Poland", {
+       "males":45.68
+      ,"females":42.99
+      }],
+    ["Slovakia", {
+       "males":52.65
+      ,"females":50.01
+      }],
+    ["Romania", {
+       "males":29.06
+      ,"females":26.47
+      }],
+    ["Belgium", {
+       "males":60.67
+      ,"females":58.11
+      }],
+    ["Croatia", {
+       "males":60.22
+      ,"females":57.71
+      }],
+    ["Portugal", {
+       "males":57.21
+      ,"females":54.84
+      }],
+    ["Bosnia and Herzegovina", {
+       "males":30.84
+      ,"females":29.26
+      }],
+    ["Hungary", {
+       "males":59.65
+      ,"females":58.16
+      }],
+    ["Greece", {
+       "males":53.15
+      ,"females":51.67
+      }],
+    ["Estonia", {
+       "males":63.16
+      ,"females":62.09
+      }],
+    ["Norway", {
+       "males":81.53
+      ,"females":80.63
+      }],
+    ["Czechia", {
+       "males":69.48
+      ,"females":68.77
+      }],
+    ["Spain", {
+       "males":66.49
+      ,"females":65.87
+      }],
+    ["Slovenia", {
+       "males":46.92
+      ,"females":46.47
+      }],
+    ["Netherlands", {
+       "males":82.83
+      ,"females":82.56
+      }],
+    ["Malta", {
+       "males":62.74
+      ,"females":63.33
+      }],
+    ["France", {
+       "males":59.14
+      ,"females":60.18
+      }],
+    ["Bulgaria", {
+       "males":34.83
+      ,"females":36.19
+      }],
+    ["Sweden", {
+       "males":65.76
+      ,"females":67.15
+      }],
+    ["Finland", {
+       "males":80.94
+      ,"females":83.05
+      }],
+    ["Latvia", {
+       "males":44.12
+      ,"females":46.43
+      }],
+    ["Ireland", {
+       "males":66.91
+      ,"females":69.79
+      }],
+    ["Cyprus", {
+       "males":47.89
+      ,"females":50.95
+      }],
+    ["Lithuania", {
+       "males":50.38
+      ,"females":55.24
+      }]
+    ]

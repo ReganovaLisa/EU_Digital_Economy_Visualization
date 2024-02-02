@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choropleth Map</title>
+  <!-- Include D3 library -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Include TopoJSON library -->
+  <script src="https://d3js.org/topojson.v3.min.js"></script>
+  <!-- Include colormap.js -->
+
+</head>
+<body>
+  <p><br>Order species by:
+    <form> 
+    
+      <div class="radio-item">
+        <input type="radio" id="map_positive_group" name="sortorder" value="positive_group" checked>
+        <label for="map_positive_group">Positive group</label>
+      </div>
+      <div class="radio-item">
+        <input type="radio" id="map_negative_group" name="sortorder" value="negative_group" checked>
+        <label for="map_negative_group">Negative group</label>
+      </div>
+      <div class="radio-item">
+        <input type="radio" id="map_full" name="sortorder" value="y_2023" checked>
+        <label for="map_full">All countries</label>
+      </div> 
+    </form>
+    </p>
+
+  <div id="chart_map"></div>
+  <script type="module" src="colormap_europe.js"></script>
+</body>
+</html>
+
+

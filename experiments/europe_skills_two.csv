@@ -1,0 +1,37 @@
+country,y_2021,y_2023,id,positive_group,negative_group
+Belgium,54.23,59.39,BE,undefined,undefined
+Bulgaria,31.18,35.52,BG,undefined,undefined
+Czechia,59.69,69.11,CZ,undefined,undefined
+Denmark,68.65,69.62,DK,undefined,undefined
+Germany,48.92,52.22,DE,undefined,undefined
+Estonia,56.37,62.61,EE,undefined,undefined
+Ireland,70.49,68.65,IE,undefined,undefined
+Greece,52.48,52.40,GR,undefined,undefined
+Spain,64.16,66.18,ES,undefined,undefined
+France,61.96,59.67,FR,undefined,undefined
+Croatia,63.37,58.95,HR,undefined,undefined
+Italy,45.60,45.75,IT,undefined,45.75
+Cyprus,50.21,49.46,CY,undefined,undefined
+Latvia,50.80,45.34,LV,undefined,undefined
+Lithuania,48.84,52.91,LT,undefined,undefined
+Luxembourg,63.79,60.14,LU,undefined,undefined
+Hungary,49.09,58.89,HU,undefined,undefined
+Malta,61.23,63.02,MT,undefined,undefined
+Netherlands,78.94,82.70,NL,undefined,undefined
+Austria,63.33,64.68,AT,undefined,undefined
+Poland,42.93,44.30,PL,undefined,undefined
+Portugal,55.31,55.97,PT,undefined,undefined
+Romania,27.82,27.73,RO,undefined,undefined
+Slovenia,49.67,46.70,SL,undefined,46.70
+Slovakia,55.18,51.31,SK,undefined,undefined
+Finland,79.18,81.99,FI,81.99,undefined
+Sweden,66.60,66.44,SE,undefined,undefined
+Iceland,80.99,undefined,IS,undefined,undefined
+Norway,78.71,81.09,NO,81.09,undefined
+Switzerland,77.79,77.52,CH,undefined,undefined
+Bosnia and Herzegovina,34.65,30.08,BA,undefined,undefined
+Montenegro,47.21,52.02,ME,undefined,undefined
+North Macedonia,34.62,undefined,MK,undefined,undefined
+Albania,23.80,undefined,AL,undefined,undefined
+Serbia,41.30,32.81,RS,undefined,undefined
+Turkiye,30.12,33.11,TR,undefined,undefined
