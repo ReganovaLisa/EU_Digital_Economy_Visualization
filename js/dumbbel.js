@@ -69,7 +69,7 @@ function draw_dumbbel() {
         .attr("transform", `translate(${margin.left}, ${margin.top})`)
 
 
-    d3v6.json("../data/data_dumbell_ordered.json").then(function(dataset){
+    d3v6.json("data/data_dumbell_ordered.json").then(function(dataset){
     console.log(dataset);
     
     horzScale = d3v6.scaleBand(dataset.map(d => d[0]), [0, width]).padding(0.95);

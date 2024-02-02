@@ -148,8 +148,8 @@ function Choropleth(data, {
 
 function updateMap() {
   Promise.all([
-    d3v7.csv("../data/europe_skills_two.csv").then(data => data.map(d => ({...d, rate: +d.y_2023}))),
-    d3v7.json("../data/europe.json"),
+    d3v7.csv("data/europe_skills_two.csv").then(data => data.map(d => ({...d, rate: +d.y_2023}))),
+    d3v7.json("data/europe.json"),
   ]).then(([unemployment, us]) => {
     const counties = topojson.feature(us, us.objects.europe);
     const states = topojson.feature(us, us.objects.europe);
