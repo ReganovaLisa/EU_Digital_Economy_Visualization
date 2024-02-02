@@ -75,7 +75,6 @@ function plot_boxplot_years(highlight_countries) {
         const box_len = 20
         const circle_r = 3
 
-        console.log(years)
 
         const yearStats = years.map(year => {
 
@@ -84,11 +83,6 @@ function plot_boxplot_years(highlight_countries) {
             const q75 = d3v6.quantile(filteredData.map(d => d[year]).filter(el => el != null), 0.75)
             const iqr = q75 - q25;
 
-            // console.log(mean, q25, q75, iqr)
-            console.log(year, filteredData
-                                .filter(el => el[year] != null)
-                                .filter(el => (el[year] > q75 + 1.5*iqr)))
-            
             return {
                 year : year,
                 mean : mean,
@@ -101,17 +95,11 @@ function plot_boxplot_years(highlight_countries) {
             };
         })
 
-        // console.log((yearStats.filter(ys => ys.outliers.length > 0).map(ys => ys.year)))
-        // console.log((yearStats.filter(ys => ys.outliers.length > 0).map(ys => ys.outliers)))
-        // console.log((yearStats.map(ys => ys.outliers)).flat(1))
-        
-        //console.log((yearStats.map(ys => ys.outliers.map(outl => {outl["y_outl"] = ys["year"]; return outl;}))).flat(1))
         const all_outliers = yearStats
                              .map(ys => ys.outliers
                                  .map(outl => { return {data : outl, year : ys["year"]}}))
                              .flat(1)
 
-        console.log(all_outliers)
 
 
 
