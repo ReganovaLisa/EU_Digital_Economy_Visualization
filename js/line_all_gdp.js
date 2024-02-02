@@ -95,7 +95,6 @@ function plot_data_years(highlight_countries) {
 
 
           var filteredData_ = filteredData
-          console.log(filteredData_)
 
           // console.log(filteredData_.map(d => timeScale(d.year)));
           // console.log(filteredData_.map(d => yScale(d.value)));
