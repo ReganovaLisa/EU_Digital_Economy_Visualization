@@ -1,0 +1,47 @@
+country,gdp,geo,joined_eu,id
+Luxembourg,143.304,Western,1958,LU
+Ireland,137.638,Northern,1973-2004,IE
+Switzerland,89.537,Western,non_eu,CH
+San Marino,84.135,Southern,non_eu,SM
+Norway,82.264,Northern,non_eu,NO
+Denmark,74.958,Northern,1973-2004,DK
+Netherlands,73.317,Western,1958,NL
+Iceland,69.833,Northern,non_eu,IS
+Austria,69.069,Western,1973-2004,AT
+Andorra,68.233,Southern,non_eu,AD
+Sweden,66.209,Northern,1973-2004,SE
+ermany,66.038,Western,1958,DE
+Belgium,65.813,Western,1958,BE
+Malta,63.481,Southern,2004,MT
+Finland,59.869,Northern,1973-2004,FI
+France,58.765,Western,1958,FR
+United Kingdom,56.836,Northern,1973-2004,UK
+Italy,54.259,Southern,1958,IT
+Cyprus,53.931,Southern,2004,CY
+Slovenia,51.407,Southern,2004,SI
+Spain,50.472,Southern,1973-2004,ES
+Lithuania,49.245,CEE,2004,LT
+Czech Republic,49.025,CEE,2004,CZ
+Poland,45.538,CEE,2004,PL
+Estonia,45.236,CEE,2004,EE
+Portugal,45.227,Southern,1973-2004,PL
+Hungary,43.601,CEE,2004,HU
+Croatia,42.873,Southern,2004-2017,HR
+Slovakia,42.228,CEE,2004,SK
+Turkey,41.881,Southern,non_eu,TR
+Romania,41.029,CEE,2004-2017,RO
+Latvia,40.892,CEE,2004,LV
+Greece,39.864,Southern,1973-2004,EL
+Russia,35.31,CEE,non_eu,RU
+Bulgaria,33.78,Southern,2004-2017,BG
+Montenegro,28.002,Southern,non_eu,ME
+Serbia,26.074,Southern,non_eu,RS
+Belarus,24.017,CEE,non_eu,BY
+Georgia,22.357,CEE,non_eu,GE
+Armenia,19.745,CEE,non_eu,AM
+Bosnia and Herzegovina,19.634,Southern,non_eu,BA
+Albania,19.556,Southern,non_eu,AL
+Azerbaijan,16.694,CEE,non_eu,AZ
+Moldova,16.916,CEE,non_eu,MD
+Kosovo,15.767,Southern,non_eu,XK
+Ukraine,14.304,CEE,non_eu,UA
