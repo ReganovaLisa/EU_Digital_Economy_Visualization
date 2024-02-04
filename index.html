@@ -116,6 +116,24 @@
 							<div class="image" id="threesp"></div><div class="content">
 								<h2>Tortor dolore feugiat<br />
 								elementum magna</h2>
+								<form> 
+									<div class="radio-item">
+									  <input type="radio" id="box_positive_group" name="box_form" value="green" checked>
+									  <label for="box_positive_group">Increasing</label>
+									</div>
+									<div class="radio-item">
+									  <input type="radio" id="box_negative_group" name="box_form" value="red" checked>
+									  <label for="box_negative_group">Stagnating</label>
+									</div>
+									<div class="radio-item">
+									  <input type="radio" id="box_variation" name="box_form" value="purple" checked>
+									  <label for="box_variation">High variation</label>
+									</div> 
+									<div class="radio-item">
+										<input type="radio" id="box_none" name="box_form" value="NAN" checked>
+										<label for="box_none">none</label>
+									  </div> 
+								  </form>
 								<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
 							</div>
 						</section>
@@ -209,11 +227,25 @@
 					</footer>
 
 			</div>
+			
 
 
-			<a href="#" class="float">
-				<i class="fa fa-plus my-float"></i>
-			</a>
+			<button href="#" class="float" id="float1" name="green">
+				high
+			</button>
+
+			<button href="#" class="float2" id="float2" name="red">
+				low
+			</button>
+
+			<button href="#" class="float3" id="float3" name="purple">
+				raise
+			</button>
+
+			<button href="#" class="float4" id="float_none" name="NAN">
+				all
+			</button>
+
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -239,12 +271,16 @@
 				window.d3 = null;
 			</script>
 
+			<script src="js/utils.js"></script>
+
 			<script src="js/line_all_gdp.js"></script>
 			<script src="js/boxplots_ict_personnel.js"></script>
 			<script src="js/barplot_multiples.js"></script>
 			<script src="js/piecharts.js"></script>			
 			<script src="js/colormap.js"></script>
 			<script src="js/dumbbel.js"></script>
+
+			<script src="js/listeners.js"></script>
 
 
 	</body>

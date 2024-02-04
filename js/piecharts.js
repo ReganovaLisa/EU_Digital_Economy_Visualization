@@ -19,7 +19,7 @@ function plot_piecharts_years(given_country, given_year) {
     const height =  document.getElementById("fivesp_svg").clientHeight;
     const margin =  {top: 30, right: 30, bottom: 60, left: 60};
 
-    const outer_r = height / 5;
+    const outer_r = (height - margin.top - margin.bottom) / 4;
     const inner_r = outer_r * 0.4;
 
     Promise.all([
@@ -90,15 +90,13 @@ function plot_piecharts_years(given_country, given_year) {
         const pie = d3v6.pie()
             .value(d=>d[1].val)
 
-        
-        console.log(data_ed, plot_age)
 
         const data_ready_sex = pie(Object.entries(plot_sex))
         const data_ready_ed = pie(Object.entries(plot_ed))
         const data_ready_age = pie(Object.entries(plot_age))
 
         svg.append("g").append("rect")
-              .attr("width", width - margin.left )
+              .attr("width", width - margin.left - margin.right )
               .attr("height", height - margin.top - margin.bottom)
               .attr("fill", "white")
               .attr("transform", `translate(${margin.left}, ${margin.top})`)
@@ -110,11 +108,13 @@ function plot_piecharts_years(given_country, given_year) {
                 .innerRadius(inner_r)         // This is the size of the donut hole
                 .outerRadius(outer_r)
             )
-            .attr('fill', d => {console.log(d.data[1]); return color(d.data[1].key)})
+            .attr('fill', d => color(d.data[1].key))
             .attr("stroke", "black")
             .style("stroke-width", "2px")
             .style("opacity", 0.7)
-            .attr("transform", `translate(${margin.left/2 + width/2}, ${height*0.65})`)
+            .attr("transform", `translate(${
+                margin.left + (width - margin.left - margin.right)/2
+            }, ${margin.top + (height- margin.top - margin.bottom)*0.70})`)
 
 
         svg.selectAll('age')
@@ -128,7 +128,9 @@ function plot_piecharts_years(given_country, given_year) {
             .attr("stroke", "black")
             .style("stroke-width", "2px")
             .style("opacity", 0.7)
-            .attr("transform", `translate(${margin.left/2 + width*0.25}, ${height*0.3})`)
+            .attr("transform", `translate(${
+                margin.left + (width - margin.left - margin.right)*0.2
+            }, ${margin.top + (height- margin.top - margin.bottom)*0.3})`)
 
         svg.selectAll('ed')
             .data(data_ready_ed)
@@ -141,7 +143,9 @@ function plot_piecharts_years(given_country, given_year) {
             .attr("stroke", "black")
             .style("stroke-width", "2px")
             .style("opacity", 0.7)
-            .attr("transform", `translate(${margin.left/2 + width*0.75}, ${height*0.3})`)
+            .attr("transform", `translate(${
+                margin.left + (width - margin.left - margin.right)*0.8
+            }, ${margin.top + (height- margin.top - margin.bottom)*0.3})`)
 
     })
 

@@ -72,7 +72,7 @@ function Choropleth(data, {
     const margin =  {top: 30, right: 30, bottom: 60, left: 60};
 
     console.log(features.features)
-    projection.fitSize([width- margin.left - margin.right, height - margin.bottom - margin.top], borders)
+    projection.fitSize([0.85*width- margin.left - margin.right, 0.85*height - margin.bottom - margin.top], borders)
 
     // Construct a path generator.
     const path = d3v7.geoPath(projection);
@@ -86,7 +86,8 @@ function Choropleth(data, {
     if (outline != null) svg.append("path")
         .attr("fill", fill)
         .attr("stroke", "currentColor")
-        .attr("d", path(outline));
+        .attr("d", path(outline))
+        .attr("transform", `translate(${margin.left}, ${margin.top})`);
   
     svg.append("g")
       .selectAll("path")
@@ -94,8 +95,10 @@ function Choropleth(data, {
       .join("path")
         .attr("fill", (d, i) => color(V[Im.get(If[i])]))
         .attr("d", path)
+        .attr("transform", `translate(${margin.left}, ${margin.top})`)
       .append("title")
-        .text((d, i) => title(d, Im.get(If[i])));
+        .text((d, i) => title(d, Im.get(If[i])))
+        .attr("transform", `translate(${margin.left}, ${margin.top})`);
   
     if (borders != null) svg.append("path")
         .attr("pointer-events", "none")
@@ -105,8 +108,8 @@ function Choropleth(data, {
         .attr("stroke-linejoin", strokeLinejoin)
         .attr("stroke-width", strokeWidth)
         .attr("stroke-opacity", strokeOpacity)
-        .attr("d", path(borders));
-
+        .attr("d", path(borders))
+        .attr("transform", `translate(${margin.left}, ${margin.top})`);
     
   
         const legendWidth = 100;

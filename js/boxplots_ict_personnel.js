@@ -1,13 +1,7 @@
-
 function init_svg_boxplot() {
     d3v6.select("#threesp")
     .append("svg")
       .attr("id","threesp_svg");
-}
-
-function getFirstFloatFromString(str) {
-var match = str.match(/-?\d+(\.\d+)?/);
-return match ? parseFloat(match[0]) : null;
 }
 
 function plot_boxplot_years(highlight_countries) {
@@ -60,7 +54,7 @@ function plot_boxplot_years(highlight_countries) {
         
         var colorScale = d3v6.scaleOrdinal()
             .domain(filteredData.map(el => el.country))
-            .range(filteredData.map(el => "hsl(" + Math.random() * 360 + ",100%,50%)"));
+            .range(filteredData.map(el => get_color(el.country)));
 
         var depthScale = d3v6.scaleOrdinal()
             .domain(filteredData.map(el => el.country))
@@ -192,7 +186,6 @@ function plot_boxplot_years(highlight_countries) {
               .attr("class", "tooltip")
               .style("font-size", "16px")
         
-        const d_short = 30
 
         svg
             .selectAll("outliers")
@@ -231,17 +224,59 @@ function plot_boxplot_years(highlight_countries) {
                 .on("mouseout", function(d) {
                     svg.selectAll("text.tooltip_text").remove();
                 });
+
+
+            const all_special = filteredData.filter(el => highlight_countries.includes(el.country))
+                .map(country => years
+                    .map(year => { return {name: country.country, value : country[year], year : year}}))
+                .flat(1).filter(el => el.value !== null)
+
+            var colorScale = d3v6.scaleOrdinal()
+                .domain(filteredData.map(el => el.country))
+                .range(filteredData.map(el => get_color(el.country)));
+            
+            console.log(filteredData.map(el => el.country))
+            console.log(filteredData.map(el => get_color(el.country)))
+            console.log(all_special.map(el => el.name))
+            console.log(all_special.map(el => el.value))
+            svg
+                .selectAll("special")
+                .data(all_special)
+                .enter()
+                .append("circle")
+                    .attr("cx", d => x(d["year"]))
+                    .attr("cy", d => y(d["value"]))
+                    .attr("r", circle_r)
+                    .attr("stroke", "black")
+                    .style("fill", d => colorScale(d.name))
+                    .attr("transform", `translate(${margin.left}, ${margin.top})`)
+
+            svg
+                .selectAll("special_text")
+                .data(all_special)
+                .enter()
+                .append("text")
+                .classed("tooltip_text", true)
+                    .attr("x", d=> x(d["year"]) + mustache_len/2)
+                    .attr("y", d => y(d["value"]))
+                    .text(d => d.name)
+                    .attr("stroke",  d => colorScale(d.name))
+                    .attr("dy", "0.35em") // Adjust vertical alignment if needed
+                    .style("font-size", "10px") // Adjust font size as needed
+                    .attr("transform", `translate(${margin.left}, ${margin.top})`);
+                    
+                
           
     })
     return;
 }
   
-var highlight_countries = 0
+var highlight_countries = []
 
 init_svg_boxplot()
 plot_boxplot_years(highlight_countries)
 
 
 window.addEventListener('resize', function(){
-plot_boxplot_years(highlight_countries);
+    plot_boxplot_years(highlight_countries);
 });
