@@ -27,8 +27,8 @@
 									<div id="menu">
 										<ul>
 											<li><a href="index.html">Home</a></li>
-											<li><a href="generic.html">Generic</a></li>
-											<li><a href="elements.html">Elements</a></li>
+											<li><a href="#one">Section one</a></li>
+											<li><a href="#two">Section two</a></li>
 											<li><a href="#">Sign Up</a></li>
 											<li><a href="#">Log In</a></li>
 										</ul>
@@ -101,24 +101,28 @@
 						</ul> -->
 					
 					</div>
+
+
+					<section class="spotlight">
+						<div class="image" id="twosp"></div><div class="content">
+							<h2>Magna primis lobortis<br />
+							sed ullamcorper</h2>
+							<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
+						</div>
+					</section>
+					<section class="spotlight">
+						<div class="image" id="threesp"></div><div class="content">
+							<h2>Tortor dolore feugiat<br />
+							elementum magna</h2>
+							<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
+						</div>
+					</section>
 				</section>
 
 				<!-- Two -->
 					<section id="two" class="wrapper alt style2">
-						<section class="spotlight">
-							<div class="image" id="twosp"></div><div class="content">
-								<h2>Magna primis lobortis<br />
-								sed ullamcorper</h2>
-								<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
-							</div>
-						</section>
-						<section class="spotlight">
-							<div class="image" id="threesp"></div><div class="content">
-								<h2>Tortor dolore feugiat<br />
-								elementum magna</h2>
-								<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
-							</div>
-						</section>
+						<p>Blablabla here </p>
+							
 						<section class="spotlight">
 							<div class="image" id="sevensp"></div><div class="content">
 								<h2>Tortor dolore feugiat<br />
@@ -155,6 +159,21 @@
 								<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
 							</div>
 						</section>
+						<section class="spotlight">
+							
+							
+								<div class="content" id="dataviz_builtWithD3">
+									<p>gjhgjhgjhgkjhfjdkdsgkjhfksfDFSDFS</p>
+									<p>gjhgjhgjhgkjhfjdkdsgkjhfksfDFSDFS</p>
+									<p>gjhgjhgjhgkjhfjdkdsgkjhfksfDFSDFS</p>
+									<p>gjhgjhgjhgkjhfjdkdsgkjhfksfDFSDFS</p>
+									<p>gjhgjhgjhgkjhfjdkdsgkjhfksfDFSDFS</p>
+								</div>
+								<div class="image"  id="wordcloud"></div>
+						</section>
+
+
+
 					</section>
 
 				<!-- Three -->
@@ -247,6 +266,14 @@
 				window.d3 = null;
 			</script>
 
+			<script src="https://d3js.org/d3.v4.js"></script>
+			<script>
+				var d3v4 = window.d3;
+				window.d3 = null;
+			</script>
+			<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+
+
 			<script src="js/line_all_gdp.js"></script>
 			<script src="js/boxplots_ict_personnel.js"></script>
 			<script src="js/barplot_multiples.js"></script>
@@ -255,6 +282,8 @@
 			<script src="js/scatter_grouped.js"></script>
 			<script src="js/colormap.js"></script>
 			<script src="js/dumbbel.js"></script>
+			<script src="js/wordcloud.js"></script>
+		
 
 
 	</body>
