@@ -20,10 +20,19 @@ function Choropleth(data, {
     strokeLinejoin = "round", // stroke line join for borders
     strokeWidth, // stroke width for borders
     strokeOpacity, // stroke opacity for borders
+    countries_to_show = [],
   } = {}) {
     // Compute values.
     const N = d3v7.map(data, id);
-    const V = d3v7.map(data, value).map(d => d == null ? NaN : +d);
+
+    var V = d3v7.map(data, value).map(d => d == null ? NaN : +d);
+    if (countries_to_show.length == 0) {
+        V = d3v7.map(data, value).map(d => d == null ? NaN : +d);
+    } else {
+        console.log(countries_to_show, data.map(d => d.country))
+        V = data.map(d => (value(d) == null) ? NaN : (countries_to_show.includes(COUNTRY_TO_ABREVIATION[d.country])) ? value(d): NaN);
+    }
+
     const Im = new d3v7.InternMap(N.map((id, i) => [id, i]));
     const If = d3v7.map(features.features, featureId);
   
@@ -47,20 +56,6 @@ function Choropleth(data, {
       title = (f, i) => T(f, O[i]);
     }
   
-    // Compute the default height. If an outline object is specified, scale the projection to fit
-    // the width, and then compute the corresponding height.
-    // if (height === undefined) {
-    //   if (outline === undefined) {
-    //     height = 400;
-    //   } else {
-    //     const [[x0, y0], [x1, y1]] = d3.geoPath(projection.fitWidth(width, outline)).bounds(outline);
-    //     const dy = Math.ceil(y1 - y0), l = Math.min(Math.ceil(x1 - x0), dy);
-    //     projection.scale(projection.scale() * (l - 1) / l).precision(0.2);
-    //     height = dy;
-    //   }
-    // }
-  
-    
   
     const svg = d3v7.create("svg")
 
@@ -148,7 +143,7 @@ function Choropleth(data, {
         return ;
 }
 
-function updateMap() {
+function updateMap(countries_to_show) {
   Promise.all([
     d3v7.csv("data/europe_skills_two.csv").then(data => data.map(d => ({...d, rate: +d.y_2023}))),
     d3v7.json("data/europe.json"),
@@ -158,7 +153,7 @@ function updateMap() {
     const statemap = new Map(states.features.map(d => [d.id, d]));
     const statemesh = topojson.mesh(us, us.objects.europe, (a, b) => a !== b);
     
-    
+    console.log(countries_to_show)
      // Clear existing map
     const chart_map = Choropleth(unemployment, {
       id: d => d.id,
@@ -178,20 +173,21 @@ function updateMap() {
         .precision(.1),
       features: states,
       borders: statemesh,
+      countries_to_show: countries_to_show,
     });
     
   });
 }
 
-function plot_map_years(given_country, given_year) {
-    updateMap()
+function plot_map_years(countries_to_show) {
+    updateMap(countries_to_show)
     return;
 }
   
 var sort_order = "y_2023";
 
-plot_map_years(given_country, given_year)
+plot_map_years([])
 
 window.addEventListener('resize', function(){
-    plot_map_years(given_country, given_year);
+    plot_map_years([]);
 });

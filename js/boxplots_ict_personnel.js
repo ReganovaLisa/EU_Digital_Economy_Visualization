@@ -165,6 +165,9 @@ function plot_boxplot_years(highlight_countries) {
                 .style("fill", "#69b3a2")
                 .style("opacity", 0.9)
                 .attr("transform", `translate(${margin.left}, ${margin.top})`)
+            .append("title")
+                .text(d => `Mean: ${d3v6.format(".1f")(d.mean)}\nq25 ${d3v6.format(".1f")(d.q25)}\nq75 ${d3v6.format(".1f")(d.q75)}`)
+                .attr("transform", `translate(${margin.left}, ${margin.top})`)
 
         svg
             .selectAll("means")

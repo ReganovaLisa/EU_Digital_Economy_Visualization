@@ -47,8 +47,8 @@ function plot_wordcloud(highlight_countries) {
 
            
         svg.append("g").append("rect")
-            .attr("width", width + margin.left)
-            .attr("height", height + margin.top + margin.bottom)
+            .attr("width", width - margin.left)
+            .attr("height", height)
             .attr("fill", "white")
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
 
@@ -71,12 +71,12 @@ function plot_wordcloud(highlight_countries) {
                 .selectAll("text")
                   .data(words)
                 .enter().append("text")
-                  .style("font-size", function(d) { return d.size; })
+                  .style("font-size", function(d) { return d.size*0.8; })
                   .style("fill", function(d,i) { return colorRange[i]; })
                   .attr("text-anchor", "middle")
                   .style("font-family", "Impact")
                   .attr("transform", function(d) {
-                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                    return "translate(" + [d.x*0.9+margin.left, margin.top+d.y*0.9] + ")rotate(" + d.rotate + ")";
                   })
                   .text(function(d) { return d.text; });
                 }   

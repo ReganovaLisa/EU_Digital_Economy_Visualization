@@ -14,5 +14,7 @@
   myButton.addEventListener("click", function(e) {
     plot_boxplot_years(COUNTRY_GROUPS[myButton.name]);
     plot_alluvial_years(COUNTRY_GROUPS[myButton.name]);
+    plot_map_years(COUNTRY_GROUPS[myButton.name]);
+    plot_barplots_years_(COUNTRY_GROUPS[myButton.name]);
   }, false)
 })

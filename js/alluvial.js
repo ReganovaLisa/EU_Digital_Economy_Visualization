@@ -15,7 +15,6 @@ function plot_alluvial_years(group) {
 
     d3v6.csv("data/alluvial.csv").then(function(data) {
         data = data.filter( d => d.joined_eu != "non_eu")
-        console.log(data)
 
 
         var color = d3v6.scaleOrdinal(d3v6.schemeSet3);
@@ -28,13 +27,11 @@ function plot_alluvial_years(group) {
 
         var my_color_link = (link) => {
             if (group_coloring) {
-
                 return group.includes(link.information.id) ? get_color(link.information.id) : "grey"
             }
             return my_color_rect(link.target.name)}
 
         var my_color_rect = (name) =>  {
-            console.log(name, Object.entries(COUNTRY_GROUPS), Object.entries(COUNTRY_GROUPS).includes(name))
             return Object.keys(COUNTRY_GROUPS).includes(name) ? name : color(name)
         }
 
@@ -96,7 +93,7 @@ function plot_alluvial_years(group) {
 
         d3v3.sankey(graph)
             .nodeAlign(d3v3.sankeyJustify)
-            .nodeWidth(20)
+            .nodeWidth(30)
             .nodePadding(1)
             .linkSort((a,b) => {if (a.information.id < b.information.id) return -1; else return 1;})
             .size([width- margin.left, height - margin.top - margin.bottom])
@@ -122,12 +119,12 @@ function plot_alluvial_years(group) {
             .attr("stroke-width", ({width}) => Math.max(1, width))
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
             .on('mouseover', function (d, i) {
-                d3.selectAll(".link").filter(other => other.information.id == d.information.id).transition()
+                d3v6.selectAll(".link").filter(other => other.information.id == d.information.id).transition()
                     .duration('50')
-                    .attr('stroke-opacity', '.85');
+                    .attr('stroke-opacity', '1');
            })
            .on('mouseout', function (d, i) {
-            d3.selectAll(".link").filter(other => other.information.id == d.information.id).transition()
+            d3v6.selectAll(".link").filter(other => other.information.id == d.information.id).transition()
                     .duration('50')
                     .attr('stroke-opacity', opacity_def);
            });
@@ -137,7 +134,7 @@ function plot_alluvial_years(group) {
         const country_nodes = graph.nodes.filter(node => node.name.length == 2)
         const other_nodes =  graph.nodes.filter(node => node.name.length != 2)
 
-        const fix_name = (n) =>  n == "UK" ? "GB" : n == "EL" ? "GR" : n;
+        
 
         svg.append("g")
           .selectAll("flag")
