@@ -11,9 +11,8 @@
 
 ["float1", "float2", "float3","float_none"].forEach( button_id => {
   const myButton = document.getElementById(button_id);
-  console.log(`Selected :  ${button_id}`)
   myButton.addEventListener("click", function(e) {
-    console.log(`Selected : ${myButton.name}`)
-    plot_boxplot_years(country_groups[myButton.name]);
+    plot_boxplot_years(COUNTRY_GROUPS[myButton.name]);
+    plot_alluvial_years(COUNTRY_GROUPS[myButton.name]);
   }, false)
 })

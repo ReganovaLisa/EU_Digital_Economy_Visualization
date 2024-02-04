@@ -116,7 +116,7 @@
 							<div class="image" id="threesp"></div><div class="content">
 								<h2>Tortor dolore feugiat<br />
 								elementum magna</h2>
-								<form> 
+								<!-- <form> 
 									<div class="radio-item">
 									  <input type="radio" id="box_positive_group" name="box_form" value="green" checked>
 									  <label for="box_positive_group">Increasing</label>
@@ -133,7 +133,7 @@
 										<input type="radio" id="box_none" name="box_form" value="NAN" checked>
 										<label for="box_none">none</label>
 									  </div> 
-								  </form>
+								  </form> -->
 								<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
 							</div>
 						</section>
@@ -169,6 +169,13 @@
 						<section class="spotlight">
 							<div class="image"  id="scatter_grouped"></div><div class="content">
 								<h2>Scatter Plot<br />
+								sed condimentum</h2>
+								<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
+							</div>
+						</section>
+						<section class="spotlight">
+							<div class="image"  id="sixsp"></div><div class="content">
+								<h2>Augue eleifend aliquet<br />
 								sed condimentum</h2>
 								<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
 							</div>
@@ -250,10 +257,17 @@
 				raise
 			</button>
 
-			<button href="#" class="float4" id="float_none" name="NAN">
-				all
+			<button href="#" class="float4" id="float_none" name="grey">
+				all<image src="data/flags/w160/ua.png" width="20" ></image>
 			</button>
 
+
+
+			<defs>
+				<pattern id="bg" patternUnits="userSpaceOnUse" width="20">
+					<image src="data/flags/w160/ua.png" width="20" ></image>
+				</pattern>
+			  </defs>
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -279,16 +293,28 @@
 				window.d3 = null;
 			</script>
 
+			<script src="https://d3js.org/d3.v3.min.js"></script>
+			<!-- <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/sankey.js"></script> -->
+			<script src="https://unpkg.com/d3-array@1"></script>
+			<script src="https://unpkg.com/d3-collection@1"></script>
+			<script src="https://unpkg.com/d3-path@1"></script>
+			<script src="https://unpkg.com/d3-shape@1"></script>
+			<script src="https://unpkg.com/d3-sankey@0"></script>
+			<script>
+				var d3v3 = window.d3;
+			</script>
+
+
 			<script src="js/utils.js"></script>
 
 			<script src="js/line_all_gdp.js"></script>
 			<script src="js/boxplots_ict_personnel.js"></script>
 			<script src="js/barplot_multiples.js"></script>
-			<script src="js/piecharts.js"></script>			
-			<script src="js/scatter.js"></script>
+			<script src="js/piecharts.js"></script>	
 			<script src="js/scatter_grouped.js"></script>
 			<script src="js/colormap.js"></script>
 			<script src="js/dumbbel.js"></script>
+			<script src="js/alluvial.js"></script>
 
 			<script src="js/listeners.js"></script>
 

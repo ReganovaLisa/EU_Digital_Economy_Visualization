@@ -235,10 +235,6 @@ function plot_boxplot_years(highlight_countries) {
                 .domain(filteredData.map(el => el.country))
                 .range(filteredData.map(el => get_color(el.country)));
             
-            console.log(filteredData.map(el => el.country))
-            console.log(filteredData.map(el => get_color(el.country)))
-            console.log(all_special.map(el => el.name))
-            console.log(all_special.map(el => el.value))
             svg
                 .selectAll("special")
                 .data(all_special)

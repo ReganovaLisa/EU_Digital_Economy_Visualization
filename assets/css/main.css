@@ -4075,3 +4075,23 @@ input, select, textarea {
 		padding: 0px;
 		text-align:center;
 	}
+
+	.node rect {
+		fill-opacity: .9;
+		shape-rendering: crispEdges;
+	}
+	
+	.node text {
+		font-family: 'Fira Sans', serif;
+		font-size: 16px;
+		pointer-events: none;
+		text-shadow: 0 1px 0 #fff;
+	}
+	
+	.link {
+		fill: none;
+	}
+	
+	/* .link:hover {
+		stroke-opacity: .9;
+	} */

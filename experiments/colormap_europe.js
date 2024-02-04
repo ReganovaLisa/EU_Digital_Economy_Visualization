@@ -53,27 +53,33 @@ function Choropleth(data, {
   
     // Compute the default height. If an outline object is specified, scale the projection to fit
     // the width, and then compute the corresponding height.
-    if (height === undefined) {
-      if (outline === undefined) {
-        height = 400;
-      } else {
-        const [[x0, y0], [x1, y1]] = d3.geoPath(projection.fitWidth(width, outline)).bounds(outline);
-        const dy = Math.ceil(y1 - y0), l = Math.min(Math.ceil(x1 - x0), dy);
-        projection.scale(projection.scale() * (l - 1) / l).precision(0.2);
-        height = dy;
-      }
-    }
+    // if (height === undefined) {
+    //   if (outline === undefined) {
+    //     height = 400;
+    //   } else {
+    //     const [[x0, y0], [x1, y1]] = d3.geoPath(projection.fitWidth(width, outline)).bounds(outline);
+    //     const dy = Math.ceil(y1 - y0), l = Math.min(Math.ceil(x1 - x0), dy);
+    //     projection.scale(projection.scale() * (l - 1) / l).precision(0.2);
+    //     height = dy;
+    //   }
+    // }
   
-    // Construct a path generator.
-    const path = d3.geoPath(projection);
+    
   
     const svg = d3.create("svg")
 
     const chartMapContainer = document.getElementById('chart_map');
+    chartMapContainer.innerHTML = '';
     chartMapContainer.appendChild(Object.assign(svg.node(), { scales: { color } }));
-    const width = document.getElementById("chart_map").clientWidth;
-    const height =  document.getElementById("chart_map").clientHeight;
+    width = document.getElementById("chart_map").clientWidth;
+    height =  document.getElementById("chart_map").clientHeight;
     const margin =  {top: 30, right: 30, bottom: 60, left: 60};
+
+    console.log(features.features)
+    projection.fitSize([width- margin.left - margin.right, height - margin.bottom - margin.top], borders)
+
+    // Construct a path generator.
+    const path = d3.geoPath(projection);
 
     svg
     .attr("width", width)
@@ -146,8 +152,8 @@ function Choropleth(data, {
 
 function updateMap() {
   Promise.all([
-    d3.csv("../map/data/europe_skills_two.csv").then(data => data.map(d => ({...d, rate: +d.y_2023}))),
-    d3.json("../map/data/europe.json"),
+    d3.csv("../data/europe_skills_two.csv").then(data => data.map(d => ({...d, rate: +d.y_2023}))),
+    d3.json("../data/europe.json"),
   ]).then(([unemployment, us]) => {
     const counties = topojson.feature(us, us.objects.europe);
     const states = topojson.feature(us, us.objects.europe);
@@ -158,7 +164,7 @@ function updateMap() {
     console.log(statemesh);
 
     
-    chartMapContainer.innerHTML = ''; // Clear existing map
+     // Clear existing map
     const chart_map = Choropleth(unemployment, {
       id: d => d.id,
       value: d => d[sort_order], // Use the selected column as the value
@@ -166,14 +172,14 @@ function updateMap() {
       domain: [0, 100],
       range: d3.schemeYlOrBr[9],
       title: (f, d) => ` ${statemap.get(f.id.slice(0, 2)).properties.NAME}\n${d?.[sort_order]}%`,
-      width: screen.width,
-      height: 0.6 * screen.width,
+      width: undefined,
+      height: undefined,
       projection: d3.geoConicConformal()
         .rotate([-20.0, 0.0])
         .center([0.0, 52.0])
         .parallels([35.0, 65.0])
         .translate([screen.width / 2, screen.width / 5])
-        .scale(700)
+        //.scale(700)
         .precision(.1),
       features: states,
       borders: statemesh,

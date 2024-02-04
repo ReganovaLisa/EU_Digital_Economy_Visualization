@@ -3,17 +3,17 @@ function getFirstFloatFromString(str) {
     return match ? parseFloat(match[0]) : null;
 }
 
-const country_groups = {
+const COUNTRY_GROUPS = {
     green: ["BG", "LV", "EE"],
     red: ["BE", "DK", "DE"],
     purple: ["FI", "MT"],
-    NAN: [],
+    grey: [],
 }
   
 function get_color(country) {
     
     var color = "grey"
-    Object.entries(country_groups).forEach(entry =>  {
+    Object.entries(COUNTRY_GROUPS).forEach(entry =>  {
         if (entry[1].includes(country)) {
         color = `${entry[0]}`;
         }

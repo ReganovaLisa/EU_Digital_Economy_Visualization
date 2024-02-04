@@ -71,7 +71,6 @@ function Choropleth(data, {
     height =  document.getElementById("sevensp").clientHeight;
     const margin =  {top: 30, right: 30, bottom: 60, left: 60};
 
-    console.log(features.features)
     projection.fitSize([0.85*width- margin.left - margin.right, 0.85*height - margin.bottom - margin.top], borders)
 
     // Construct a path generator.
@@ -156,12 +155,9 @@ function updateMap() {
   ]).then(([unemployment, us]) => {
     const counties = topojson.feature(us, us.objects.europe);
     const states = topojson.feature(us, us.objects.europe);
-    console.log(states);
     const statemap = new Map(states.features.map(d => [d.id, d]));
-    console.log(statemap);
     const statemesh = topojson.mesh(us, us.objects.europe, (a, b) => a !== b);
-    console.log(statemesh);
-
+    
     
      // Clear existing map
     const chart_map = Choropleth(unemployment, {
