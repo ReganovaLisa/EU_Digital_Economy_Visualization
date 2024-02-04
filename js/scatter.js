@@ -39,16 +39,16 @@ function plot_scatter(highlight_countries,buisness_size) {
     
       // Add Y axis
       const y = d3v6.scaleLinear()
-        .domain([0, 1.3*d3v6.max(data, function(d) { return +d[buisness_size]})])
+        .domain([0, 1.3*d3v6.max(data, function(d) { return +d.large})])
         .range([ height - margin.top - margin.bottom, 0]);
       svg.append("g")
       .attr("transform", `translate(${margin.left}, ${margin.top})`)
       .call(d3v6.axisLeft(y))
 
-        console.log(d3v6.max(data, function(d) { return +d[buisness_size]}));
+        console.log(d3v6.max(data, function(d) { return +d.large}));
         const tooltip = d3v6.select("#scatter_svg")
         .append("div")
-        .style("opacity", 0)
+        .style("opacity", 0.5)
         .attr("class", "tooltip")
         .style("background-color", "white")
         .style("border", "solid")
@@ -83,9 +83,9 @@ function plot_scatter(highlight_countries,buisness_size) {
             .enter()
             .append("circle")
               .attr("cx", function (d) { return x(d.ict); } )
-              .attr("cy", function (d) { return y(d[buisness_size]); } )
+              .attr("cy", function (d) { return y(d.small); } )
               .attr("r", 5)
-              .style("fill", "red")
+              .style("fill", "green")
               .style("opacity", 0.5)
               .style("stroke", "blue")
             .on("mouseover", mouseover )
@@ -98,9 +98,9 @@ function plot_scatter(highlight_countries,buisness_size) {
             .enter()
             .append("circle")
               .attr("cx", function (d) { return x(d.ict); } )
-              .attr("cy", function (d) { return y(d[buisness_size]); } )
+              .attr("cy", function (d) { return y(d.middle); } )
               .attr("r", 5)
-              .style("fill", "red")
+              .style("fill", "blue")
               .style("opacity", 0.5)
               .style("stroke", "blue")
             .on("mouseover", mouseover )
@@ -114,7 +114,7 @@ function plot_scatter(highlight_countries,buisness_size) {
             .enter()
             .append("circle")
               .attr("cx", function (d) { return x(d.ict); } )
-              .attr("cy", function (d) { return y(d[buisness_size]); } )
+              .attr("cy", function (d) { return y(d.large); } )
               .attr("r", 5)
               .style("fill", "red")
               .style("opacity", 0.5)

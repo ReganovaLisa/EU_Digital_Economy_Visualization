@@ -150,7 +150,7 @@ function draw_dumbbel() {
             let x = horzScale(d[0]) + barCenter,
                 y = vertScale(d[1].females)
             popup.attr("transform", `translate(${x}, ${y}) rotate(-10)`)
-            callout(popup, [`${d[0]}(females)`, revenueFormat(d[1].females)])
+            callout(popup, [`${d[0]}(females)`, revenueFormat(d[1].females)+" %"])
         })
         .on("mouseout", function(){
             popup.style("display", "none")
