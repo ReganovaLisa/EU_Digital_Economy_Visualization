@@ -4008,7 +4008,7 @@ input, select, textarea {
 
 	.float{
 		position:fixed;
-		width:60px;
+		width:65px;
 		height:60px;
 		bottom:40px;
 		right:40px;
@@ -4017,8 +4017,61 @@ input, select, textarea {
 		border-radius:50px;
 		text-align:center;
 		box-shadow: 2px 2px 3px #999;
+		margin: auto;
+		line-height: 1.25rem;   
+		padding: 0px;
 	}
 	
+	.float2{
+		position:fixed;
+		width:65px;
+		height:60px;
+		bottom:40px;
+		right:110px;
+		background-color:rgb(204, 0, 0);
+		color:#FFF;
+		border-radius:40px;
+		text-align:center;
+		box-shadow: 2px 2px 3px #999;
+		margin: auto;
+		line-height: 1.25rem;   
+		padding: 0px;
+	}
+
+	.float3{
+		position:fixed;
+		width:65px;
+		height:60px;
+		bottom:110px;
+		right:85px;
+		background-color:rgb(146, 0, 204);
+		color:#FFF;
+		border-radius:40px;
+		text-align:center;
+		box-shadow: 2px 2px 3px #999;
+		margin: auto;
+		line-height: 1.25rem;   
+		padding: 0px;
+	}
+
+	.float4{
+		position:fixed;
+		width:65px;
+		height:60px;
+		bottom:110px;
+		right:15px;
+		background-color:rgb(18, 15, 19);
+		color:#FFF;
+		border-radius:40px;
+		text-align:center;
+		box-shadow: 2px 2px 3px #999;
+		margin: auto;
+		line-height: 1.25rem;   
+		padding: 0px;
+	}
+
 	.my-float{
-		margin-top:22px;
+		/* margin-top:-52px; */
+		padding: 0px;
+		text-align:center;
 	}
