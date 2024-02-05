@@ -57,7 +57,16 @@ const COUNTRY_TO_ABREVIATION = {
     "Moldova" : "MD",
     "Kosovo" : "XK",
     "Ukraine" : "UA",
+    "North macedonia": "MK"
 }
+
+const obj_invertion = (obj) => Object.fromEntries(Object.entries(obj).map(a => a.reverse()))
+
+
+
+const ABBREVIATION_TO_COUNTRY = obj_invertion(COUNTRY_TO_ABREVIATION)
+
+
 
 function get_color(country) {
     
