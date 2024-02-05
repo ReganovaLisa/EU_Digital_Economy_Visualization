@@ -21,7 +21,7 @@ function plot_scatter(highlight_countries) {
 
 
     d3v6.csv(
-        "../data/scatter_data_grouped.csv").then(function(data) {
+        "data/scatter_data_grouped.csv").then(function(data) {
            
         svg.append("g").append("rect")
             .attr("width", width - margin.left)
