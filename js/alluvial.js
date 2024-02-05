@@ -186,5 +186,5 @@ plot_alluvial_years([])
 
 
 window.addEventListener('resize', function(){
-    plot_alluvial_years(groups);
+    plot_alluvial_years([]);
 });

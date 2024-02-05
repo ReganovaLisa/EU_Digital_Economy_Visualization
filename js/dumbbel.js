@@ -165,7 +165,6 @@ function draw_dumbbel(highlight_countries) {
         
         res = chart.call(horzAxis)
         res.selectAll("text")
-
             .attr("opacity", d => {return get_opacity(d)})
         chart.call(vertAxisLeft)
         chart.call(vertAxisRight)
