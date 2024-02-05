@@ -47,13 +47,13 @@ function plot_wordcloud(highlight_countries) {
 
            
         svg.append("g").append("rect")
-            .attr("width", width - margin.left)
-            .attr("height", height)
-            .attr("fill", "white")
+            .attr("width", width - margin.left - margin.right) 
+            .attr("height", height - margin.top - margin.right)
+            .attr("fill", "ghostwhite")
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
 
             var layout = d3.layout.cloud()
-            .size([width, height])
+            .size([width- margin.left - margin.right, height- margin.top - margin.right])
             .words(data.map(function(d) { return {text: d.country, size:d[highlight_countries]}; }))
             .padding(5)        //space between words
             .rotate(function() { return ~~(Math.random() * 2) * 90; })
@@ -71,12 +71,12 @@ function plot_wordcloud(highlight_countries) {
                 .selectAll("text")
                   .data(words)
                 .enter().append("text")
-                  .style("font-size", function(d) { return d.size*0.8; })
+                  .style("font-size", function(d) { return d.size; })
                   .style("fill", function(d,i) { return colorRange[i]; })
                   .attr("text-anchor", "middle")
                   .style("font-family", "Impact")
                   .attr("transform", function(d) {
-                    return "translate(" + [d.x*0.9+margin.left, margin.top+d.y*0.9] + ")rotate(" + d.rotate + ")";
+                    return "translate(" + [d.x + margin.left, d.y + margin.top] + ")rotate(" + d.rotate + ")";
                   })
                   .text(function(d) { return d.text; });
                 }   

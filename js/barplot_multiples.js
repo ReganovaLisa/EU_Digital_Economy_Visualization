@@ -19,7 +19,7 @@ function init_svg_barplots() {
           
         const width = document.getElementById("foursp_svg").clientWidth;
         const height =  document.getElementById("foursp_svg").clientHeight;
-        const margin =  {top: 30, right: 30, bottom: 50, left: 30};
+        const margin =  {top: 30, right: 35, bottom: 50, left: 35};
         const num_multiples = 4;
         const hor_margin = 10;
         const single_width = Math.floor((width - margin.left - margin.right) / 2 - 2 * hor_margin);
@@ -118,25 +118,28 @@ function init_svg_barplots() {
             svg.append("g").append("rect")
               .attr("width", width - margin.left - margin.right)
               .attr("height", height - margin.top - margin.bottom)
-              .attr("fill", "white")
+              .attr("fill", "ghostwhite")
               .attr("transform", `translate(${margin.left}, ${margin.top})`)
   
 
             svg.append("g")
               .attr("transform", `translate(${margin.left + hor_margin}, ${height - margin.bottom})`)
-              .call(d3v6.axisBottom(x2).ticks(5));
+              .call(d3v6.axisBottom(x2).ticks(5))
+              .style("font-size", "11pt");
             
             svg.append("g")
               .attr("transform", `translate(${margin.left + 3*hor_margin + single_width}, ${height - margin.bottom})`)
-              .call(d3v6.axisBottom(x).ticks(5));
+              .call(d3v6.axisBottom(x).ticks(5))
+              .style("font-size", "11pt");
             
             svg.append("g")
               .attr("transform", `translate(${margin.left}, ${margin.top})`)
               .call(d3v6.axisLeft(y))
+              .style("font-size", "11pt");
 
               var color = d3v6.scaleOrdinal()
                 .domain(['very_low', 'low', 'high', 'very_high'])
-                .range(["cyan", "green", "yellow", "orange"])
+                .range(["#2C668C", "#4093CB", "#F7C00F", "#993404"])
             
             svg.append("g")
                 .selectAll("flag")
@@ -155,6 +158,7 @@ function init_svg_barplots() {
                     .attr("y", height - 1/4*margin.bottom)
                     .attr("x", margin.left + (Math.floor(index/2) + 1/4 + 1/2*(index%2))*(single_width))
                     .style("fill", color(intencity))
+                    .style("font-size", "14pt")
                     .text(intencity.replace('_',' '))
                     //.style("fill", color(colName));
                 

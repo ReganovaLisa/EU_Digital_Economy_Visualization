@@ -11,7 +11,7 @@ function plot_data_years(highlight_countries) {
         
       const width = document.getElementById("twosp_svg").clientWidth;
       const height =  document.getElementById("twosp_svg").clientHeight;
-      const margin =  {top: 30, right: 30, bottom: 30, left: 30};
+      const margin =  {top: 30, right: 35, bottom: 30, left: 35};
 
 
       d3v6.tsv(
@@ -84,15 +84,17 @@ function plot_data_years(highlight_countries) {
           svg.append("g").append("rect")
             .attr("width", width - margin.left)
             .attr("height", height - margin.top - margin.bottom)
-            .attr("fill", "white")
+            .attr("fill", "ghostwhite")
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
 
           svg.append("g")
             .attr("transform", `translate(${margin.left}, ${height - margin.bottom})`)
-            .call(d3v6.axisBottom(x));
+            .call(d3v6.axisBottom(x))
+            .style("font-size", "11pt");
           svg.append("g")
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
             .call(d3v6.axisLeft(y))
+            .style("font-size", "11pt");
 
 
           svg.selectAll("line_path")

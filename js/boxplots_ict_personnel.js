@@ -11,7 +11,7 @@ function plot_boxplot_years(highlight_countries) {
         
     const width = document.getElementById("threesp_svg").clientWidth;
     const height =  document.getElementById("threesp_svg").clientHeight;
-    const margin =  {top: 30, right: 30, bottom: 60, left: 60};
+    const margin =  {top: 30, right: 35, bottom: 60, left: 70};
 
 
     d3v6.tsv(
@@ -100,15 +100,17 @@ function plot_boxplot_years(highlight_countries) {
         svg.append("g").append("rect")
             .attr("width", width - margin.left/2)
             .attr("height", height - margin.top - margin.bottom/2)
-            .attr("fill", "white")
+            .attr("fill", "ghostwhite")
             .attr("transform", `translate(${margin.left/2}, ${margin.top})`)
 
         svg.append("g")
             .attr("transform", `translate(${margin.left}, ${height - margin.bottom/2})`)
-            .call(d3v6.axisBottom(x));
+            .call(d3v6.axisBottom(x))
+            .style("font-size", "11pt");
         svg.append("g")
             .attr("transform", `translate(${margin.left/2}, ${margin.top})`)
             .call(d3v6.axisLeft(y))
+            .style("font-size", "11pt");
 
 
         svg
@@ -162,7 +164,7 @@ function plot_boxplot_years(highlight_countries) {
                 .attr("y", d => y(d.q75))
                 .attr("height", d => y(d.q25) - y(d.q75) )
                 .attr("stroke", "black")
-                .style("fill", "#69b3a2")
+                .style("fill", "#E1A100")
                 .style("opacity", 0.9)
                 .attr("transform", `translate(${margin.left}, ${margin.top})`)
             .append("title")

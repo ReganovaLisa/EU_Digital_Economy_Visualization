@@ -5,7 +5,7 @@ function callout(g, data){
     let path = g.selectAll("path")
         .data([null])
         .join("path")
-        .attr("fill", "white")
+        .attr("fill", "ghostwhite")
         .attr("fill-opacity", 0.8)
         .attr("stroke", "black")
         .attr("stroke-linejoin", "bevel");
@@ -72,7 +72,7 @@ function draw_dumbbel(highlight_countries) {
     svg.append("g").append("rect")
         .attr("width", width)
         .attr("height", height)
-        .attr("fill", "white")
+        .attr("fill", "ghostwhite")
         .attr("transform", `translate(${margin.left}, ${margin.top})`)
 
 
@@ -80,14 +80,14 @@ function draw_dumbbel(highlight_countries) {
     
     horzScale = d3v6.scaleBand(dataset.map(d => d[0]), [0, width]).padding(0.95);
     
-    horzAxis = (e)=>e.append("g").classed("x axis", true).call(d3v6.axisBottom(horzScale)).attr("transform", `translate(0, ${height}) `).selectAll("text")
+    horzAxis = (e)=>e.append("g").classed("x axis", true).call(d3v6.axisBottom(horzScale)).attr("transform", `translate(0, ${height}) `).selectAll("text").style("font-size", "11pt")
     .style("text-anchor", "end")
     .attr("dx", "-.8em")
     .attr("dy", ".15em")
     .attr("transform", "rotate(-30)");
     vertScale = d3v6.scaleLinear([0, d3v6.max(dataset, (d)=>(Math.max(d[1].males, d[1].females)))], [height, 0]).nice();
-    vertAxisLeft = (e)=>e.append("g").classed("y axis", true).call(d3v6.axisLeft(vertScale).tickFormat(d3v6.format("~s"))).select(".domain").remove();
-    vertAxisRight = (e)=>e.append("g").classed("y axis right", true).call(d3v6.axisRight(vertScale).tickFormat(d3v6.format("~s"))).attr("transform", `translate(${width}, 0)`).select(".domain").remove();
+    vertAxisLeft = (e)=>e.append("g").classed("y axis", true).call(d3v6.axisLeft(vertScale).tickFormat(d3v6.format("~s"))).attr("transform", `translate(0, 0)`).style("font-size", "11pt").select(".domain").remove();
+    vertAxisRight = (e)=>e.append("g").classed("y axis right", true).call(d3v6.axisRight(vertScale).tickFormat(d3v6.format("~s"))).attr("transform", `translate(${width}, 0)`).style("font-size", "11pt").select(".domain").remove();
     revenueFormat = d3v6.format(".2f");
     
     //vertScaleDif = d3v6.scaleLinear([-5, 9], [1.5*height, 1.1*height]).nice();
@@ -129,7 +129,7 @@ function draw_dumbbel(highlight_countries) {
         .attr("cx", (d)=>(horzScale(d[0])+barCenter))
         .attr("cy", (d)=>(vertScale(d[1].males)))
         .attr("r", d => d[1].females < d[1].males ? 8 : 6)
-        .attr("fill", "steelblue")
+        .attr("fill", "#0872CA")
         .style('opacity', d => get_opacity(d[0]))
         .style("cursor", "pointer")
         .on("mouseover", function(event, d){
@@ -149,7 +149,7 @@ function draw_dumbbel(highlight_countries) {
         .attr("cx", (d)=>(horzScale(d[0])+barCenter))
         .attr("cy", (d)=>(vertScale(d[1].females)))
         .attr("r", d => d[1].females > d[1].males ? 8 : 6)
-        .attr("fill", "red")
+        .attr("fill", "darkred")
         .style('opacity', d => get_opacity(d[0]))
         .style("cursor", "pointer")
         .on("mouseover", function(event, d){

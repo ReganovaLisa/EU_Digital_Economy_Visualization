@@ -4,10 +4,10 @@ function getFirstFloatFromString(str) {
 }
 
 const COUNTRY_GROUPS = {
-    green: ["BG", "LV", "EE"],
-    red: ["BE", "DK", "DE"],
-    purple: ["FI", "MT"],
-    grey: [],
+    DarkSlateBlue: ["BG", "LV", "EE"],
+    Darkred: ["BE", "DK", "DE"],
+    Chocolate: ["FI", "MT"],
+    Cornflowerblue: [],
 }
   
 const COUNTRY_TO_ABREVIATION = {
@@ -70,7 +70,7 @@ const ABBREVIATION_TO_COUNTRY = obj_invertion(COUNTRY_TO_ABREVIATION)
 
 function get_color(country) {
     
-    var color = "grey"
+    var color = "lightgrey"
     Object.entries(COUNTRY_GROUPS).forEach(entry =>  {
         if (entry[1].includes(country)) {
         color = `${entry[0]}`;

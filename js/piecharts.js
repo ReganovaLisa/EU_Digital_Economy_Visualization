@@ -85,7 +85,7 @@ function plot_piecharts_years(given_country, given_year) {
         console.log(plot_ed)
         const color = d3v6.scaleOrdinal()
             .domain(["M", "F" ,"ED0-4", "ED5-8", "Y15-34", "Y35-74"])
-            .range(["blue", "pink", "lime", "green", "yellow", "orange"])
+            .range(["#4093CB", "#ffeedd", "#E9D78E", "#F7C00F", "#D1D7B9", "#08513E"])
         
         const pie = d3v6.pie()
             .value(d=>d[1].val)
@@ -98,7 +98,7 @@ function plot_piecharts_years(given_country, given_year) {
         svg.append("g").append("rect")
               .attr("width", width - margin.left - margin.right )
               .attr("height", height - margin.top - margin.bottom)
-              .attr("fill", "white")
+              .attr("fill", "ghostwhite")
               .attr("transform", `translate(${margin.left}, ${margin.top})`)
 
         svg.append("text")
@@ -107,6 +107,7 @@ function plot_piecharts_years(given_country, given_year) {
               .attr("x", 0)
               .style("fill", "black")
               .text("SEX")
+              .style("font-size", "16pt")
               .attr("transform", `translate(${
                 margin.left + (width - margin.left - margin.right)/2
             }, ${margin.top + (height- margin.top - margin.bottom)*0.7})`)
@@ -117,6 +118,7 @@ function plot_piecharts_years(given_country, given_year) {
             .attr("x", 0)
             .style("fill", "black")
             .text("AGE")
+            .style("font-size", "16pt")
             .attr("transform", `translate(${
                 margin.left + (width - margin.left - margin.right)*0.23
             }, ${margin.top + (height- margin.top - margin.bottom)*0.3})`)
@@ -126,7 +128,8 @@ function plot_piecharts_years(given_country, given_year) {
             .attr("y", 0)
             .attr("x", 0)
             .style("fill", "black")
-            .text("ED")
+            .text("ÉCOLE")
+            .style("font-size", "16pt")
             .attr("transform", `translate(${
                 margin.left + (width - margin.left - margin.right)*0.77
             }, ${margin.top + (height- margin.top - margin.bottom)*0.3})`)

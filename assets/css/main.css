@@ -3359,7 +3359,7 @@ input, select, textarea {
 		-ms-transition: -ms-transform 0.5s ease;
 		transition: transform 0.5s ease;
 		-webkit-overflow-scrolling: touch;
-		background: #4093CB;
+		background: #C68740;
 		color: #ffffff;
 		height: 100%;
 		max-width: 80%;
@@ -4012,7 +4012,7 @@ input, select, textarea {
 		height:60px;
 		bottom:40px;
 		right:40px;
-		background-color:#0C9;
+		background-color:Darkred;
 		color:#FFF;
 		border-radius:50px;
 		text-align:center;
@@ -4028,7 +4028,7 @@ input, select, textarea {
 		height:60px;
 		bottom:40px;
 		right:110px;
-		background-color:rgb(204, 0, 0);
+		background-color:darkslateblue;
 		color:#FFF;
 		border-radius:40px;
 		text-align:center;
@@ -4044,7 +4044,7 @@ input, select, textarea {
 		height:60px;
 		bottom:110px;
 		right:85px;
-		background-color:rgb(146, 0, 204);
+		background-color:chocolate;
 		color:#FFF;
 		border-radius:40px;
 		text-align:center;
@@ -4060,7 +4060,7 @@ input, select, textarea {
 		height:60px;
 		bottom:110px;
 		right:15px;
-		background-color:rgb(18, 15, 19);
+		background-color:cornflowerblue;
 		color:#FFF;
 		border-radius:40px;
 		text-align:center;
