@@ -120,7 +120,7 @@ function draw_dumbbel() {
         .classed("males", true)
         .attr("cx", (d)=>(horzScale(d[0])+barCenter))
         .attr("cy", (d)=>(vertScale(d[1].males)))
-        .attr("r", 7)
+        .attr("r", d => d[1].females < d[1].males ? 8 : 6)
         .attr("fill", "steelblue")
         .style("cursor", "pointer")
         .on("mouseover", function(event, d){
@@ -139,7 +139,7 @@ function draw_dumbbel() {
         .classed("females", true)
         .attr("cx", (d)=>(horzScale(d[0])+barCenter))
         .attr("cy", (d)=>(vertScale(d[1].females)))
-        .attr("r", 7)
+        .attr("r", d => d[1].females > d[1].males ? 8 : 6)
         .attr("fill", "red")
         .style("cursor", "pointer")
         .on("mouseover", function(event, d){

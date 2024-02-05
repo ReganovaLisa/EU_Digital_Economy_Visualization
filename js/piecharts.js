@@ -19,7 +19,7 @@ function plot_piecharts_years(given_country, given_year) {
     const height =  document.getElementById("fivesp_svg").clientHeight;
     const margin =  {top: 30, right: 30, bottom: 60, left: 60};
 
-    const outer_r = (height - margin.top - margin.bottom) / 4;
+    const outer_r = (height - margin.top - margin.bottom) / 5;
     const inner_r = outer_r * 0.4;
 
     Promise.all([
@@ -109,7 +109,7 @@ function plot_piecharts_years(given_country, given_year) {
               .text("SEX")
               .attr("transform", `translate(${
                 margin.left + (width - margin.left - margin.right)/2
-            }, ${margin.top + (height- margin.top - margin.bottom)*0.70})`)
+            }, ${margin.top + (height- margin.top - margin.bottom)*0.7})`)
 
         svg.append("text")
             .attr("text-anchor","middle")
@@ -118,7 +118,7 @@ function plot_piecharts_years(given_country, given_year) {
             .style("fill", "black")
             .text("AGE")
             .attr("transform", `translate(${
-                margin.left + (width - margin.left - margin.right)*0.2
+                margin.left + (width - margin.left - margin.right)*0.23
             }, ${margin.top + (height- margin.top - margin.bottom)*0.3})`)
         
         svg.append("text")
@@ -128,7 +128,7 @@ function plot_piecharts_years(given_country, given_year) {
             .style("fill", "black")
             .text("ED")
             .attr("transform", `translate(${
-                margin.left + (width - margin.left - margin.right)*0.8
+                margin.left + (width - margin.left - margin.right)*0.77
             }, ${margin.top + (height- margin.top - margin.bottom)*0.3})`)
 
         svg.selectAll('gender')
@@ -144,9 +144,9 @@ function plot_piecharts_years(given_country, given_year) {
             .style("opacity", 0.7)
             .attr("transform", `translate(${
                 margin.left + (width - margin.left - margin.right)/2
-            }, ${margin.top + (height- margin.top - margin.bottom)*0.70})`)
+            }, ${margin.top + (height- margin.top - margin.bottom)*0.7})`)
         .append("title")
-        .text(d => d.data[1].key)
+        .text(d => `${d3v6.format(".1f")(d.data[1].val)}% ${d.data[1].key == "M" ? "male" : "female" } `)
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 
@@ -162,10 +162,10 @@ function plot_piecharts_years(given_country, given_year) {
                 .style("stroke-width", "2px")
                 .style("opacity", 0.7)
                 .attr("transform", `translate(${
-                    margin.left + (width - margin.left - margin.right)*0.2
+                    margin.left + (width - margin.left - margin.right)*0.23
                 }, ${margin.top + (height- margin.top - margin.bottom)*0.3})`)
             .append("title")
-                .text(d => `${d.data[1].key.substring(1,9)} years`)
+                .text(d => `${d3v6.format(".1f")(d.data[1].val)}% ${d.data[1].key.substring(1,9)} years`)
                 .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
         svg.selectAll('ed')
@@ -180,10 +180,10 @@ function plot_piecharts_years(given_country, given_year) {
                 .style("stroke-width", "2px")
                 .style("opacity", 0.7)
                 .attr("transform", `translate(${
-                    margin.left + (width - margin.left - margin.right)*0.8
+                    margin.left + (width - margin.left - margin.right)*0.77
                 }, ${margin.top + (height- margin.top - margin.bottom)*0.3})`)
             .append("title")
-                .text(d => `High education : ${d.data[1].key == "NRP" ? "no answer" : d.data[1].key.substring(2,6) + " years"}`)
+                .text(d => `${d3v6.format(".1f")(d.data[1].val)}% High education : ${d.data[1].key == "NRP" ? "no answer" : d.data[1].key.substring(2,6) + " years"}`)
                 .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     })

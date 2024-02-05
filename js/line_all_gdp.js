@@ -59,7 +59,7 @@ function plot_data_years(highlight_countries) {
 
           var depthScale = d3v6.scaleOrdinal()
             .domain(filteredData.map(el => el.country))
-            .range(filteredData.map(el => {if (get_color(el.country) != "grey") return 3; else return 1;}));
+            .range(filteredData.map(el => {if (get_color(el.country) != "grey") return 4; else return 2;}));
           
 
           const step = 5
@@ -67,6 +67,19 @@ function plot_data_years(highlight_countries) {
           var line = d3v6.line()
             .x(d => x(d.year))
             .y(d => y(d.value));
+
+          
+          const highlight = function(event,d){
+            d3v6.select(this)
+              .style("stroke", d => "black")
+              .style("stroke-width", d => 5);
+          }
+
+          const doNotHighlight = function(event,d){
+            d3v6.select(this)
+              .style("stroke", d => colorScale(d.country))
+              .style("stroke-width", d => depthScale(d.country))
+          }
 
           svg.append("g").append("rect")
             .attr("width", width - margin.left)
@@ -92,7 +105,12 @@ function plot_data_years(highlight_countries) {
              .style("stroke", d => colorScale(d.country))
              .attr("fill", "none")
              .style("stroke-width", d => depthScale(d.country))
-             .attr("transform", `translate(${margin.left}, ${margin.top})`);
+             .on("mouseover", highlight)
+             .on("mouseleave", doNotHighlight )
+             .attr("transform", `translate(${margin.left}, ${margin.top})`) 
+            .append("title")
+              .text(d => `${ABBREVIATION_TO_COUNTRY[d.country]}`)
+            .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
           svg.selectAll("line_text")
             .data(filteredData)
@@ -110,9 +128,8 @@ function plot_data_years(highlight_countries) {
             })
             .attr("stroke",  d => colorScale(d.country))
             .attr("dy", "0.35em") // Adjust vertical alignment if needed
-            .style("font-size", "10px") // Adjust font size as needed
-            .attr("transform", `translate(${margin.left}, ${margin.top})`);
- 
+            .style("font-size", "10px") // Adjust font size as needed      
+            .attr("transform", `translate(${margin.left}, ${margin.top})`);    
         })
 
       return;

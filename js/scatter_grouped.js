@@ -45,17 +45,6 @@ function plot_scatter(highlight_countries) {
       .attr("transform", `translate(${margin.left}, ${margin.top})`)
       .call(d3v6.axisLeft(y))
 
-      
-      const tooltip = d3v6.select("#scatter_grouped_svg")
-        .append("div")
-        .style("opacity", 0)
-        .attr("class", "tooltip")
-        .style("background-color", "white")
-        .style("border", "solid")
-        .style("border-width", "1px")
-        .style("border-radius", "5px")
-        .style("padding", "10px");
-
         // Color scale: give me a specie name, I return a color
   const color = d3v6.scaleOrdinal()
   .domain(["small", "middle", "large" ])
@@ -105,6 +94,9 @@ svg.append('g')
     .style("fill", function (d) { return color(d.group) } )
   .on("mouseover", highlight)
   .on("mouseleave", doNotHighlight )
+  .append("title")
+    .text(d => `${d.country}\nICT in GDP ${d3v6.format(".1f")(d.ict)}%\n${d3v6.format(".1f")(d.skills)}% ${d.group} businesses`)
+    .attr("transform", `translate(${margin.left}, ${margin.top})`)
   
 
           

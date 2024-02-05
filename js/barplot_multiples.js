@@ -184,7 +184,7 @@ function init_svg_barplots() {
                       .attr("height", y.bandwidth() - 2)
                       .attr("transform", `translate(${margin.left}, ${margin.top})`)
                     .append("title")
-                      .text(d => `High education : ${d.data[1].key == "NRP" ? "no answer" : d.data[1].key.substring(2,6) + " years"}`)
+                      .text(d => `${d.key} : ${d3v6.format(".1f")(d.val)}% enterprises with\n${intencity.replace('_',' ')} digital intencity index`)
                       .attr("transform", `translate(${margin.left}, ${margin.top})`);
             })
   
