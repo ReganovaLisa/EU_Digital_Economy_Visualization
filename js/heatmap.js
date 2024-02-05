@@ -57,8 +57,8 @@ function plot_heatmap(highlight_countries) {
           
             // Build color scale
             const myColor = d3v6.scaleLinear()
-              .range(["white", "#69b3a2"])
-              .domain([1,100])
+              .range(["cyan", "orange"])
+              .domain([-0,1])
           
             // Three function that change the tooltip when user hover / move / leave a cell
             const mouseover = function(event,d) {
@@ -88,14 +88,14 @@ function plot_heatmap(highlight_countries) {
                 .attr("ry", 4)
                 .attr("width", x.bandwidth() )
                 .attr("height", y.bandwidth() )
-                .style("fill", function(d) { return myColor(d.Correlation)} )
+                .style("fill", function(d) { return myColor(Math.abs(d.Correlation))} )
                 .style("stroke-width", 4)
                 .style("stroke", "none")
                 .style("opacity", 0.8)
               .on("mouseover", mouseover)
               .on("mouseleave", mouseleave)
               .append("title")
-               .text(d => `correleation ${d3v6.format(".1f")(d.value)}`)
+               .text(d => `correleation ${d3v6.format(".1f")(d.Correlation)}`)
               .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
            // Add title to graph

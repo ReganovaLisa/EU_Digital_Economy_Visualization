@@ -82,7 +82,7 @@ function plot_piecharts_years(given_country, given_year) {
         const plot_sex = data_sex.map(row => {return {key: row["gender"], val: row[given_year]}})
         const plot_ed = data_ed.map(row => {return {key: row["ed_years"], val: row[given_year]}})
         const plot_age = data_age.map(row => {return {key: row["age"], val: row[given_year]}})
-        console.log(plot_ed)
+
         const color = d3v6.scaleOrdinal()
             .domain(["M", "F" ,"ED0-4", "ED5-8", "Y15-34", "Y35-74"])
             .range(["blue", "pink", "lime", "green", "yellow", "orange"])
