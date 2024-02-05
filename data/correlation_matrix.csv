@@ -1,0 +1,101 @@
+Column_one,Column_two,Correlation
+Persons with ICT education,Persons with ICT education,1.0
+Persons with ICT education,Individuals lost information as a result of a virus programs,0.06947890818858561
+Persons with ICT education,Individuals use a smartphone,-0.15080449794963302
+Persons with ICT education,Enterprises that provided training to develop/upgrade ICT skills of their personnel ,-0.034739561045306976
+Persons with ICT education,Individuals - internet use,-0.15574890771847344
+Persons with ICT education,Had online purchase in the last 3 months,0.0024722048844202133
+Persons with ICT education,Percentage of ICT sector in GDP,0.021818326072054212
+Persons with ICT education,Percentage of the ICT personnel in total employment,-0.03180920799109799
+Persons with ICT education,Employed ICT specialists,-0.0349654149412895
+Persons with ICT education,Enterprises that recruited or tried to recruit ICT specialists,-0.06657795516141342
+Individuals lost information as a result of a virus programs,Persons with ICT education,0.06947890818858561
+Individuals lost information as a result of a virus programs,Individuals lost information as a result of a virus programs,1.0
+Individuals lost information as a result of a virus programs,Individuals use a smartphone,-0.09641599049238833
+Individuals lost information as a result of a virus programs,Enterprises that provided training to develop/upgrade ICT skills of their personnel ,-0.1276595744680851
+Individuals lost information as a result of a virus programs,Individuals - internet use,-0.17058213702499472
+Individuals lost information as a result of a virus programs,Had online purchase in the last 3 months,-0.21013741517571813
+Individuals lost information as a result of a virus programs,Percentage of ICT sector in GDP,0.15841615217391916
+Individuals lost information as a result of a virus programs,Percentage of the ICT personnel in total employment,-0.0391304347826087
+Individuals lost information as a result of a virus programs,Employed ICT specialists,-0.2743176263746163
+Individuals lost information as a result of a virus programs,Enterprises that recruited or tried to recruit ICT specialists,-0.022955547298999308
+Individuals use a smartphone,Persons with ICT education,-0.15080449794963302
+Individuals use a smartphone,Individuals lost information as a result of a virus programs,-0.09641599049238832
+Individuals use a smartphone,Individuals use a smartphone,0.9999999999999998
+Individuals use a smartphone,Enterprises that provided training to develop/upgrade ICT skills of their personnel ,0.4031844422501792
+Individuals use a smartphone,Individuals - internet use,0.6896551724137929
+Individuals use a smartphone,Had online purchase in the last 3 months,0.48768472906403937
+Individuals use a smartphone,Percentage of ICT sector in GDP,0.08300395256916997
+Individuals use a smartphone,Percentage of the ICT personnel in total employment,0.38177964008283694
+Individuals use a smartphone,Employed ICT specialists,0.429829915561914
+Individuals use a smartphone,Enterprises that recruited or tried to recruit ICT specialists,0.3742872419918606
+Enterprises that provided training to develop/upgrade ICT skills of their personnel ,Persons with ICT education,-0.034739561045306976
+Enterprises that provided training to develop/upgrade ICT skills of their personnel ,Individuals lost information as a result of a virus programs,-0.1276595744680851
+Enterprises that provided training to develop/upgrade ICT skills of their personnel ,Individuals use a smartphone,0.4031844422501792
+Enterprises that provided training to develop/upgrade ICT skills of their personnel ,Enterprises that provided training to develop/upgrade ICT skills of their personnel ,1.0
+Enterprises that provided training to develop/upgrade ICT skills of their personnel ,Individuals - internet use,0.4668451436581022
+Enterprises that provided training to develop/upgrade ICT skills of their personnel ,Had online purchase in the last 3 months,0.4986754943620637
+Enterprises that provided training to develop/upgrade ICT skills of their personnel ,Percentage of ICT sector in GDP,0.07920807608695958
+Enterprises that provided training to develop/upgrade ICT skills of their personnel ,Percentage of the ICT personnel in total employment,0.24999999999999997
+Enterprises that provided training to develop/upgrade ICT skills of their personnel ,Employed ICT specialists,0.49066953691505877
+Enterprises that provided training to develop/upgrade ICT skills of their personnel ,Enterprises that recruited or tried to recruit ICT specialists,0.3547929238715285
+Individuals - internet use,Persons with ICT education,-0.15574890771847344
+Individuals - internet use,Individuals lost information as a result of a virus programs,-0.17058213702499472
+Individuals - internet use,Individuals use a smartphone,0.6896551724137929
+Individuals - internet use,Enterprises that provided training to develop/upgrade ICT skills of their personnel ,0.46684514365810215
+Individuals - internet use,Individuals - internet use,0.9999999999999998
+Individuals - internet use,Had online purchase in the last 3 months,0.6305418719211822
+Individuals - internet use,Percentage of ICT sector in GDP,0.13043478260869565
+Individuals - internet use,Percentage of the ICT personnel in total employment,0.43384050009413294
+Individuals - internet use,Employed ICT specialists,0.559027346829079
+Individuals - internet use,Enterprises that recruited or tried to recruit ICT specialists,0.38571586006794795
+Had online purchase in the last 3 months,Persons with ICT education,0.0024722048844202133
+Had online purchase in the last 3 months,Individuals lost information as a result of a virus programs,-0.21013741517571816
+Had online purchase in the last 3 months,Individuals use a smartphone,0.48768472906403937
+Had online purchase in the last 3 months,Enterprises that provided training to develop/upgrade ICT skills of their personnel ,0.49867549436206365
+Had online purchase in the last 3 months,Individuals - internet use,0.6305418719211822
+Had online purchase in the last 3 months,Had online purchase in the last 3 months,0.9999999999999998
+Had online purchase in the last 3 months,Percentage of ICT sector in GDP,0.05928853754940712
+Had online purchase in the last 3 months,Percentage of the ICT personnel in total employment,0.329718780071541
+Had online purchase in the last 3 months,Employed ICT specialists,0.6981630420398719
+Had online purchase in the last 3 months,Enterprises that recruited or tried to recruit ICT specialists,0.454287568524472
+Percentage of ICT sector in GDP,Persons with ICT education,0.02181832607205421
+Percentage of ICT sector in GDP,Individuals lost information as a result of a virus programs,0.15841615217391916
+Percentage of ICT sector in GDP,Individuals use a smartphone,0.08300395256916997
+Percentage of ICT sector in GDP,Enterprises that provided training to develop/upgrade ICT skills of their personnel ,0.07920807608695958
+Percentage of ICT sector in GDP,Individuals - internet use,0.13043478260869565
+Percentage of ICT sector in GDP,Had online purchase in the last 3 months,0.05928853754940712
+Percentage of ICT sector in GDP,Percentage of ICT sector in GDP,1.0
+Percentage of ICT sector in GDP,Percentage of the ICT personnel in total employment,0.6019813782608928
+Percentage of ICT sector in GDP,Employed ICT specialists,0.1538554437923503
+Percentage of ICT sector in GDP,Enterprises that recruited or tried to recruit ICT specialists,0.008676810001882659
+Percentage of the ICT personnel in total employment,Persons with ICT education,-0.03180920799109799
+Percentage of the ICT personnel in total employment,Individuals lost information as a result of a virus programs,-0.0391304347826087
+Percentage of the ICT personnel in total employment,Individuals use a smartphone,0.381779640082837
+Percentage of the ICT personnel in total employment,Enterprises that provided training to develop/upgrade ICT skills of their personnel ,0.24999999999999997
+Percentage of the ICT personnel in total employment,Individuals - internet use,0.43384050009413294
+Percentage of the ICT personnel in total employment,Had online purchase in the last 3 months,0.329718780071541
+Percentage of the ICT personnel in total employment,Percentage of ICT sector in GDP,0.6019813782608928
+Percentage of the ICT personnel in total employment,Percentage of the ICT personnel in total employment,0.9999999999999999
+Percentage of the ICT personnel in total employment,Employed ICT specialists,0.3960126726082884
+Percentage of the ICT personnel in total employment,Enterprises that recruited or tried to recruit ICT specialists,0.17224880382775118
+Employed ICT specialists,Persons with ICT education,-0.0349654149412895
+Employed ICT specialists,Individuals lost information as a result of a virus programs,-0.2743176263746164
+Employed ICT specialists,Individuals use a smartphone,0.4298299155619141
+Employed ICT specialists,Enterprises that provided training to develop/upgrade ICT skills of their personnel ,0.4906695369150587
+Employed ICT specialists,Individuals - internet use,0.559027346829079
+Employed ICT specialists,Had online purchase in the last 3 months,0.698163042039872
+Employed ICT specialists,Percentage of ICT sector in GDP,0.1538554437923503
+Employed ICT specialists,Percentage of the ICT personnel in total employment,0.39601267260828843
+Employed ICT specialists,Employed ICT specialists,1.0
+Employed ICT specialists,Enterprises that recruited or tried to recruit ICT specialists,0.44177696466170147
+Enterprises that recruited or tried to recruit ICT specialists,Persons with ICT education,-0.06657795516141343
+Enterprises that recruited or tried to recruit ICT specialists,Individuals lost information as a result of a virus programs,-0.022955547298999308
+Enterprises that recruited or tried to recruit ICT specialists,Individuals use a smartphone,0.3742872419918606
+Enterprises that recruited or tried to recruit ICT specialists,Enterprises that provided training to develop/upgrade ICT skills of their personnel ,0.35479292387152844
+Enterprises that recruited or tried to recruit ICT specialists,Individuals - internet use,0.38571586006794795
+Enterprises that recruited or tried to recruit ICT specialists,Had online purchase in the last 3 months,0.454287568524472
+Enterprises that recruited or tried to recruit ICT specialists,Percentage of ICT sector in GDP,0.008676810001882657
+Enterprises that recruited or tried to recruit ICT specialists,Percentage of the ICT personnel in total employment,0.17224880382775118
+Enterprises that recruited or tried to recruit ICT specialists,Employed ICT specialists,0.4417769646617014
+Enterprises that recruited or tried to recruit ICT specialists,Enterprises that recruited or tried to recruit ICT specialists,0.9999999999999998

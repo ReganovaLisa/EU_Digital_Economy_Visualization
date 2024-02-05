@@ -21,7 +21,7 @@ function plot_heatmap(highlight_countries) {
 
 
     d3v6.csv(
-        "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv").then(function(data) {
+        "../data/correlation_matrix.csv").then(function(data) {
            
         svg.append("g").append("rect")
             .attr("width", width - margin.left)
@@ -30,8 +30,8 @@ function plot_heatmap(highlight_countries) {
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
 
             
-            const myGroups = Array.from(new Set(data.map(d => d.group)))
-            const myVars = Array.from(new Set(data.map(d => d.variable)))
+            const myGroups = Array.from(new Set(data.map(d => d.Column_one)))
+            const myVars = Array.from(new Set(data.map(d => d.Column_two)))
           
             // Build X scales and axis:
             const x = d3v6.scaleBand()
@@ -58,7 +58,7 @@ function plot_heatmap(highlight_countries) {
             // Build color scale
             const myColor = d3v6.scaleLinear()
               .range(["white", "#69b3a2"])
-              .domain([1,100])
+              .domain([-1,1])
           
             // create a tooltip
             const tooltip = d3v6.select("#heatmap")
@@ -81,7 +81,7 @@ function plot_heatmap(highlight_countries) {
             }
             const mousemove = function(event,d) {
               tooltip
-                .html("The exact value of<br>this cell is: " + d.value)
+                .html("The exact value of<br>this cell is: " + d.Correlation)
                 .style("left", (event.x)/2 + "px")
                 .style("top", (event.y)/2 + "px")
             }
@@ -95,18 +95,18 @@ function plot_heatmap(highlight_countries) {
           
             // add the squares
             svg.selectAll()
-              .data(data, function(d) {return d.group+':'+d.variable;})
+              .data(data, function(d) {return d.Column_one+':'+d.Column_two;})
               .join("rect")
-                .attr("x", function(d) { return x(d.group) })
-                .attr("y", function(d) { return y(d.variable) })
+                .attr("x", function(d) { return x(d.Column_one) })
+                .attr("y", function(d) { return y(d.Column_two) })
                 .attr("rx", 4)
                 .attr("ry", 4)
                 .attr("width", x.bandwidth() )
                 .attr("height", y.bandwidth() )
-                .style("fill", function(d) { return myColor(d.value)} )
+                .style("fill", function(d) { return myColor(d.Correlation)} )
                 .style("stroke-width", 4)
                 .style("stroke", "none")
-                .style("opacity", 0.7)
+                .style("opacity", 0.8)
               .on("mouseover", mouseover)
               .on("mousemove", mousemove)
               .on("mouseleave", mouseleave)
