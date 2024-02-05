@@ -1,5 +1,5 @@
 
-function init_svg_scatterplot() {
+function init_svg_heatmapplot() {
     d3v6.select("#heatmap")
     .append("svg")
       .attr("id","heatmap_svg");
@@ -10,7 +10,7 @@ var match = str.match(/-?\d+(\.\d+)?/);
 return match ? parseFloat(match[0]) : null;
 }
 
-function plot_scatter(highlight_countries) {
+function plot_heatmap(highlight_countries) {
 
     var svg = d3v6.select("#heatmap_svg");
     svg.selectAll("*").remove();
@@ -21,92 +21,121 @@ function plot_scatter(highlight_countries) {
 
 
     d3v6.csv(
-        "../data/scatter_data_grouped.csv").then(function(data) {
+        "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv").then(function(data) {
            
         svg.append("g").append("rect")
             .attr("width", width - margin.left)
             .attr("height", height - margin.top - margin.bottom)
-            .attr("fill", "white")
+            //.attr("fill", "white")
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
 
             
-        const x = d3v6.scaleLinear()
-        .domain([0, 1.1*d3v6.max(data, function(d) { return d.ict})])
-        .range([ 0,width - margin.left ]);
-        svg.append("g")
-        .attr("transform", `translate(${margin.left}, ${height - margin.bottom})`)
-            .call(d3v6.axisBottom(x));
-    
-      // Add Y axis
-      const y = d3v6.scaleLinear()
-        .domain([0, 1.3*d3v6.max(data, function(d) { return +d.skills})])
-        .range([ height - margin.top - margin.bottom, 0]);
-      svg.append("g")
-      .attr("transform", `translate(${margin.left}, ${margin.top})`)
-      .call(d3v6.axisLeft(y))
+            const myGroups = Array.from(new Set(data.map(d => d.group)))
+            const myVars = Array.from(new Set(data.map(d => d.variable)))
+          
+            // Build X scales and axis:
+            const x = d3v6.scaleBand()
+              .range([ 0, width - margin.left ])
+              .domain(myGroups)
+              .padding(0.05);
+            svg.append("g")
+              .style("font-size", 15)
+              .attr("transform", `translate(0, ${height - margin.bottom})`)
+              .call(d3v6.axisBottom(x).tickSize(0))
+              .select(".domain").remove()
+          
+            // Build Y scales and axis:
+            const y = d3v6.scaleBand()
+              .range([ height - margin.top - margin.bottom, 0 ])
+              .domain(myVars)
+              .padding(0.05);
+            svg.append("g")
+              .style("font-size", 15)
+              .attr("transform", `translate(0, ${margin.left})`)
+              .call(d3v6.axisLeft(y).tickSize(0))
+              .select(".domain").remove()
+          
+            // Build color scale
+            const myColor = d3v6.scaleLinear()
+              .range(["white", "#69b3a2"])
+              .domain([1,100])
+          
+            // create a tooltip
+            const tooltip = d3v6.select("#heatmap")
+              .append("div")
+              .style("opacity", 0)
+              .attr("class", "tooltip")
+              .style("background-color", "white")
+              .style("border", "solid")
+              .style("border-width", "2px")
+              .style("border-radius", "5px")
+              .style("padding", "5px")
+          
+            // Three function that change the tooltip when user hover / move / leave a cell
+            const mouseover = function(event,d) {
+              tooltip
+                .style("opacity", 1)
+              d3v6.select(this)
+                .style("stroke", "black")
+                .style("opacity", 1)
+            }
+            const mousemove = function(event,d) {
+              tooltip
+                .html("The exact value of<br>this cell is: " + d.value)
+                .style("left", (event.x)/2 + "px")
+                .style("top", (event.y)/2 + "px")
+            }
+            const mouseleave = function(event,d) {
+              tooltip
+                .style("opacity", 0)
+              d3v6.select(this)
+                .style("stroke", "none")
+                .style("opacity", 0.8)
+            }
+          
+            // add the squares
+            svg.selectAll()
+              .data(data, function(d) {return d.group+':'+d.variable;})
+              .join("rect")
+                .attr("x", function(d) { return x(d.group) })
+                .attr("y", function(d) { return y(d.variable) })
+                .attr("rx", 4)
+                .attr("ry", 4)
+                .attr("width", x.bandwidth() )
+                .attr("height", y.bandwidth() )
+                .style("fill", function(d) { return myColor(d.value)} )
+                .style("stroke-width", 4)
+                .style("stroke", "none")
+                .style("opacity", 0.7)
+              .on("mouseover", mouseover)
+              .on("mousemove", mousemove)
+              .on("mouseleave", mouseleave)
+              .append("title")
+              .text('frf')
+              .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-      
-      const tooltip = d3v6.select("#heatmap_svg")
-        .append("div")
-        .style("opacity", 0)
-        .attr("class", "tooltip")
-        .style("background-color", "white")
-        .style("border", "solid")
-        .style("border-width", "1px")
-        .style("border-radius", "5px")
-        .style("padding", "10px");
+           // Add title to graph
+           svg.append("text")
+           .attr("x", 0)
+           .attr("y", -50)
+           .attr("text-anchor", "left")
+           .style("font-size", "22px")
+           .text("A d3v6.js heatmap");
+   
+   // Add subtitle to graph
+          svg.append("text")
+           .attr("x", 0)
+           .attr("y", -20)
+           .attr("text-anchor", "left")
+           .style("font-size", "14px")
+           .style("fill", "grey")
+           .style("max-width", 400)
+           .text("A short description of the take-away message of this chart.");
+   
 
-        // Color scale: give me a specie name, I return a color
-  const color = d3v6.scaleOrdinal()
-  .domain(["small", "middle", "large" ])
-  .range([ "#440154ff", "#21908dff", "#fde725ff"])
-
-  console.log(data.group);
-
-
-// Highlight the specie that is hovered
-const highlight = function(event,d){
-
-  selected_specie = d.group
-  
-
-  d3v6.selectAll(".dot")
-    .transition()
-    .duration(200)
-    .style("fill", "lightgrey")
-    .attr("r", 3)
-
-  d3v6.selectAll("." + selected_specie)
-    .transition()
-    .duration(200)
-    .style("fill", color(selected_specie))
-    .attr("r", 7)
-}
-
-// Highlight the specie that is hovered
-const doNotHighlight = function(event,d){
-  d3v6.selectAll(".dot")
-    .transition()
-    .duration(200)
-    .style("fill", d => color(d.group))
-    .attr("r", 5 )
-}
-
-// Add dots
-svg.append('g')
-  .selectAll("dot")
-  .data(data)
-  .enter()
-  .append("circle")
-    .attr("class", function (d) { return "dot " + d.group } )
-    .attr("cx", function (d) { return x(d.ict); } )
-    .attr("cy", function (d) { return y(d.skills); } )
-    .attr("r", 5)
-    .style("fill", function (d) { return color(d.group) } )
-  .on("mouseover", highlight)
-  .on("mouseleave", doNotHighlight )
-  
-
+        
+          
+         
           
     })
     return;
@@ -114,10 +143,10 @@ svg.append('g')
   
 var highlight_countries = 0
 
-init_svg_scatterplot()
-plot_scatter(highlight_countries)
+init_svg_heatmapplot()
+plot_heatmap(highlight_countries)
 
 
 window.addEventListener('resize', function(){
-plot_scatter(highlight_countries);
+plot_heatmap(highlight_countries);
 });
