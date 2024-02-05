@@ -9,6 +9,15 @@ const COUNTRY_GROUPS = {
     Chocolate: ["FI", "MT"],
     Cornflowerblue: [],
 }
+
+const GROUP_NAMES = {
+    green: "RAISE",
+    red: "STAGNATION",
+    purple: "VARIATION",
+    grey: "OTHER",
+}
+
+
   
 const COUNTRY_TO_ABREVIATION = {
     "Luxembourg" : "LU",

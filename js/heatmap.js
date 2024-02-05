@@ -17,8 +17,30 @@ function plot_heatmap(highlight_countries) {
         
     const width = document.getElementById("heatmap_svg").clientWidth;
     const height =  document.getElementById("heatmap_svg").clientHeight;
-    const margin =  {top: 30, right: 30, bottom: 60, left: 60};
+    const margin =  {top: 30, right: 30, bottom: 60, left: 120};
 
+    const name_mapping = {
+      "Persons with ICT education" : 
+          "ICT education",
+      "Individuals lost information as a result of a virus programs" : 
+          "Virus SW victims",
+      "Individuals use a smartphone" : 
+          "Smartphone usage",
+      "Enterprises that provided training to develop/upgrade ICT skills of their personnel " :
+          "Firms ICT-trainings",
+      "Individuals - internet use" : 
+          "Internet usage",
+      "Had online purchase in the last 3 months" : 
+          "Online purchases",
+      "Percentage of ICT sector in GDP" : 
+          "ICT sector % in GDP",
+      "Percentage of the ICT personnel in total employment" : 
+          "ICT personel %",
+      "Employed ICT specialists" : 
+          "ICT specialists",
+      "Enterprises that recruited or tried to recruit ICT specialists" : 
+          "ICT recrutement"
+    }
 
     d3v6.csv(
         "../data/correlation_matrix.csv").then(function(data) {
@@ -26,7 +48,7 @@ function plot_heatmap(highlight_countries) {
         svg.append("g").append("rect")
             .attr("width", width - margin.left)
             .attr("height", height - margin.top - margin.bottom)
-            //.attr("fill", "white")
+            .attr("fill", "white")
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
 
             
@@ -38,39 +60,43 @@ function plot_heatmap(highlight_countries) {
               .range([ 0, width - margin.left ])
               .domain(myGroups)
               .padding(0.05);
-            svg.append("g")
-              .style("font-size", 15)
-              .attr("transform", `translate(0, ${height - margin.bottom})`)
-              .call(d3v6.axisBottom(x).tickSize(0))
-              .select(".domain").remove()
+            let x_scale = svg.append("g")
+              .attr("font-size", "10px")
+              .attr("transform", `translate(${margin.left}, ${height - margin.bottom})`)
+              .call(d3v6.axisBottom(x).tickSize(0));
+            
+            x_scale.selectAll("text")
+              .text(d => {console.log(d, name_mapping[d]); return name_mapping[d]})
+              .style("text-anchor", "end")
+              .attr("transform", `rotate(-20) translate(${0}, ${0})`)
+              .attr("opacity",1)
+              // .attr("transform", `translate(${margin.left}, ${margin.top})`)
           
             // Build Y scales and axis:
             const y = d3v6.scaleBand()
               .range([ height - margin.top - margin.bottom, 0 ])
               .domain(myVars)
               .padding(0.05);
-            svg.append("g")
-              .style("font-size", 15)
-              .attr("transform", `translate(0, ${margin.left})`)
+
+            let y_scale = svg.append("g")
+              .style("font-size", 5)
+              .attr("transform", `translate(${margin.left}, ${margin.top})`)
               .call(d3v6.axisLeft(y).tickSize(0))
-              .select(".domain").remove()
+            y_scale.selectAll("text")
+                .text(d => {console.log(d, name_mapping[d]); return name_mapping[d]})
+                .attr("font-size", "10px")
+                .attr("transform", `rotate(0) translate(${0}, ${0})`)
           
             // Build color scale
             const myColor = d3v6.scaleLinear()
-              .range([ "#69b3a2",'yellow'])
-              .domain([-1,1])
+              .range(["cyan", "orange"])
+              .domain([-0,1])
           
             // Three function that change the tooltip when user hover / move / leave a cell
             const mouseover = function(event,d) {
               d3v6.select(this)
                 .style("stroke", "black")
                 .style("opacity", 1)
-            }
-            const mousemove = function(event,d) {
-              tooltip
-                .html("The exact value of<br>this cell is: " + d.value)
-                .style("left", (event.x)/2 + "px")
-                .style("top", (event.y)/2 + "px")
             }
             const mouseleave = function(event,d) {
               d3v6.select(this)
@@ -88,39 +114,16 @@ function plot_heatmap(highlight_countries) {
                 .attr("ry", 4)
                 .attr("width", x.bandwidth() )
                 .attr("height", y.bandwidth() )
-                .style("fill", function(d) { return myColor(d.Correlation)} )
+                .style("fill", function(d) { return myColor(Math.abs(d.Correlation))} )
                 .style("stroke-width", 4)
                 .style("stroke", "none")
                 .style("opacity", 0.8)
+              .attr("transform", `translate(${margin.left}, ${margin.top})`)
               .on("mouseover", mouseover)
               .on("mouseleave", mouseleave)
               .append("title")
-               .text(d => `correleation ${d3v6.format(".1f")(d.Correlation)}`)
-              .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-           // Add title to graph
-           svg.append("text")
-           .attr("x", 0)
-           .attr("y", -50)
-           .attr("text-anchor", "left")
-           .style("font-size", "22px")
-           .text("A d3v6.js heatmap");
-   
-   // Add subtitle to graph
-          svg.append("text")
-           .attr("x", 0)
-           .attr("y", -20)
-           .attr("text-anchor", "left")
-           .style("font-size", "14px")
-           .style("fill", "grey")
-           .style("max-width", 400)
-           .text("A short description of the take-away message of this chart.");
-   
-
-        
-          
-         
-          
+               .text(d => `${d.Column_one}\nand\n${d.Column_two}\ncorreleation ${d3v6.format(".1f")(d.Correlation)}`)
+              .attr("transform", `translate(${margin.left}, ${margin.top})`);         
     })
     return;
 }
