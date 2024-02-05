@@ -12,6 +12,14 @@ return match ? parseFloat(match[0]) : null;
 
 function plot_scatter(highlight_countries) {
 
+
+    var get_opacity = (name) => {
+      if (highlight_countries.length > 0) {
+        return highlight_countries.includes(COUNTRY_TO_ABREVIATION[name]) ? 1 : 0.1
+      }
+      return 1;
+    }
+
     var svg = d3v6.select("#scatter_grouped_svg");
     svg.selectAll("*").remove();
         
@@ -33,10 +41,9 @@ function plot_scatter(highlight_countries) {
         const x = d3v6.scaleLinear()
         .domain([0, 1.1*d3v6.max(data, function(d) { return d.ict})])
         .range([ 0,width - margin.left ]);
-        svg.append("g")
-        .attr("transform", `translate(${margin.left}, ${height - margin.bottom})`)
+        let x_ref = svg.append("g")
+          .attr("transform", `translate(${margin.left}, ${height - margin.bottom})`)
             .call(d3v6.axisBottom(x));
-    
       // Add Y axis
       const y = d3v6.scaleLinear()
         .domain([0, 1.3*d3v6.max(data, function(d) { return +d.skills})])
@@ -50,7 +57,6 @@ function plot_scatter(highlight_countries) {
   .domain(["small", "middle", "large" ])
   .range([ "#440154ff", "#21908dff", "#fde725ff"])
 
-  console.log(data.group);
 
 
 // Highlight the specie that is hovered
@@ -63,7 +69,7 @@ const highlight = function(event,d){
     .transition()
     .duration(200)
     .style("fill", "lightgrey")
-    .attr("r", 3)
+    .attr("r", 4)
 
   d3v6.selectAll("." + selected_specie)
     .transition()
@@ -92,19 +98,18 @@ svg.append('g')
     .attr("cy", function (d) { return y(d.skills); } )
     .attr("r", 5)
     .style("fill", function (d) { return color(d.group) } )
+    .style('opacity', d => get_opacity(d.country))
   .on("mouseover", highlight)
   .on("mouseleave", doNotHighlight )
   .append("title")
     .text(d => `${d.country}\nICT in GDP ${d3v6.format(".1f")(d.ict)}%\n${d3v6.format(".1f")(d.skills)}% ${d.group} businesses`)
     .attr("transform", `translate(${margin.left}, ${margin.top})`)
-  
-
           
     })
     return;
 }
   
-var highlight_countries = 0
+var highlight_countries = []
 
 init_svg_scatterplot()
 plot_scatter(highlight_countries)

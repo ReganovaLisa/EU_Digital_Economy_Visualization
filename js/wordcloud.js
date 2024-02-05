@@ -103,7 +103,7 @@ var dropdownButton = d3v4.select("#dataviz_builtWithD3")
   
 
 // add the options to the button
-dropdownButton // Add a button
+let cloud_options = dropdownButton // Add a button
   .selectAll('myOptions') // Next 4 lines add 6 options = 6 colors
  	.data(allGroup)
   .enter()

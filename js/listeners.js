@@ -16,5 +16,10 @@
     plot_alluvial_years(COUNTRY_GROUPS[myButton.name]);
     plot_map_years(COUNTRY_GROUPS[myButton.name]);
     plot_barplots_years_(COUNTRY_GROUPS[myButton.name]);
+    plot_scatter(COUNTRY_GROUPS[myButton.name]);
+    draw_dumbbel(COUNTRY_GROUPS[myButton.name]);
+
+    dropdown_highlight(pie_options, COUNTRY_GROUPS[myButton.name]);
+    dropdown_highlight(cloud_options, COUNTRY_GROUPS[myButton.name]);
   }, false)
 })

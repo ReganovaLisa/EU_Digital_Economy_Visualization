@@ -32,7 +32,14 @@ function callout(g, data){
 };
   
   
-function draw_dumbbel() {
+function draw_dumbbel(highlight_countries) {
+
+    var get_opacity = (name) => {
+        if (highlight_countries.length > 0) {
+          return highlight_countries.includes(COUNTRY_TO_ABREVIATION[name]) ? 1 : 0.1
+        }
+        return 1;
+    }
 
     const chartMapContainer = document.getElementById('chart_dumbbel');
     chartMapContainer.innerHTML = '';
@@ -111,6 +118,7 @@ function draw_dumbbel() {
             return (height - vertScale(Math.abs(males - females)))
         })
         .attr("fill", "gray")
+        .style('opacity', d => get_opacity(d[0]));
         
         var popup = null;
         
@@ -122,6 +130,7 @@ function draw_dumbbel() {
         .attr("cy", (d)=>(vertScale(d[1].males)))
         .attr("r", d => d[1].females < d[1].males ? 8 : 6)
         .attr("fill", "steelblue")
+        .style('opacity', d => get_opacity(d[0]))
         .style("cursor", "pointer")
         .on("mouseover", function(event, d){
             let x = horzScale(d[0]) + barCenter,
@@ -141,6 +150,7 @@ function draw_dumbbel() {
         .attr("cy", (d)=>(vertScale(d[1].females)))
         .attr("r", d => d[1].females > d[1].males ? 8 : 6)
         .attr("fill", "red")
+        .style('opacity', d => get_opacity(d[0]))
         .style("cursor", "pointer")
         .on("mouseover", function(event, d){
             let x = horzScale(d[0]) + barCenter,
@@ -153,7 +163,10 @@ function draw_dumbbel() {
         })
 
         
-        chart.call(horzAxis)
+        res = chart.call(horzAxis)
+        res.selectAll("text")
+
+            .attr("opacity", d => {return get_opacity(d)})
         chart.call(vertAxisLeft)
         chart.call(vertAxisRight)
         popup = chart.append("g").classed("popup", true);
@@ -165,9 +178,10 @@ function draw_dumbbel() {
     });
 }
 
-draw_dumbbel()
+
+draw_dumbbel([])
 
 
 window.addEventListener('resize', function(){
-    draw_dumbbel();
+    draw_dumbbel([]);
 });

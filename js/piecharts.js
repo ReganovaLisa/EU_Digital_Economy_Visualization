@@ -212,17 +212,27 @@ var dropdownButton = d3v4.select("#dataviz_drop_pie")
   .append('select')
   
 
-// add the options to the button
-dropdownButton // Add a button
-  .selectAll('myOptions') // Next 4 lines add 6 options = 6 colors
+let pie_options = dropdownButton
+  .selectAll('myOptions')
  	.data(allGroup)
   .enter()
 	.append('option')
-  .text(function (d) { return d; }) // text showed in the menu
+  .text(function (d) { return d; })
   .attr("value", function (d) { return d; })
   .style("background-color", "#222222");
   
-
+function dropdown_highlight(dd_options, countries) {
+    
+    if (countries.length > 0) {
+        dd_options
+            .style("background-color", el => {
+                return countries.includes(COUNTRY_TO_ABREVIATION[el]) ?
+                 get_color(COUNTRY_TO_ABREVIATION[el]) : "#222222";});
+    } else {
+        dd_options
+            .style("background-color", "#222222");
+    }   
+}
 
 
 dropdownButton.on("change", function(d) {

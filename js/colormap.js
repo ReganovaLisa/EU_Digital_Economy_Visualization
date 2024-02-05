@@ -29,7 +29,6 @@ function Choropleth(data, {
     if (countries_to_show.length == 0) {
         V = d3v7.map(data, value).map(d => d == null ? NaN : +d);
     } else {
-        console.log(countries_to_show, data.map(d => d.country))
         V = data.map(d => (value(d) == null) ? NaN : (countries_to_show.includes(COUNTRY_TO_ABREVIATION[d.country])) ? value(d): NaN);
     }
 
@@ -153,7 +152,6 @@ function updateMap(countries_to_show) {
     const statemap = new Map(states.features.map(d => [d.id, d]));
     const statemesh = topojson.mesh(us, us.objects.europe, (a, b) => a !== b);
     
-    console.log(countries_to_show)
      // Clear existing map
     const chart_map = Choropleth(unemployment, {
       id: d => d.id,

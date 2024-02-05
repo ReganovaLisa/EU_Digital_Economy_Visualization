@@ -17,7 +17,6 @@ function plot_alluvial_years(group) {
         data = data.filter( d => d.joined_eu != "non_eu")
 
 
-        var color = d3v6.scaleOrdinal(d3v6.schemeSet3);
         var group_coloring = false
 
 
@@ -25,15 +24,8 @@ function plot_alluvial_years(group) {
             group_coloring = true;
         }
 
-        var my_color_link = (link) => {
-            if (group_coloring) {
-                return group.includes(link.information.id) ? get_color(link.information.id) : "grey"
-            }
-            return my_color_rect(link.target.name)}
 
-        var my_color_rect = (name) =>  {
-            return Object.keys(COUNTRY_GROUPS).includes(name) ? name : color(name)
-        }
+        
 
 
 
@@ -90,6 +82,20 @@ function plot_alluvial_years(group) {
         graph.nodes.forEach(function (d, i) {
             graph.nodes[i] = { "name": d };
         });
+
+        var color = d3v6.scaleOrdinal()
+          .domain(graph.nodes.map(node => node.name).filter(n => (n.length > 2 && !Object.keys(COUNTRY_GROUPS).includes(n))))
+          .range(d3v6.schemeSet3);
+        var my_color_link = (link) => {
+            if (group_coloring) {
+                return group.includes(link.information.id) ? get_color(link.information.id) : "grey"
+            }
+            return my_color_rect(link.target.name)}
+
+        var my_color_rect = (name) =>  {
+            console.log(name, COUNTRY_GROUPS)
+            return Object.keys(COUNTRY_GROUPS).includes(name) ? name : color(name)
+        }
 
         d3v3.sankey(graph)
             .nodeAlign(d3v3.sankeyJustify)

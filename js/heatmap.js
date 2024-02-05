@@ -60,34 +60,13 @@ function plot_heatmap(highlight_countries) {
               .range(["white", "#69b3a2"])
               .domain([1,100])
           
-            // create a tooltip
-            const tooltip = d3v6.select("#heatmap")
-              .append("div")
-              .style("opacity", 0)
-              .attr("class", "tooltip")
-              .style("background-color", "white")
-              .style("border", "solid")
-              .style("border-width", "2px")
-              .style("border-radius", "5px")
-              .style("padding", "5px")
-          
             // Three function that change the tooltip when user hover / move / leave a cell
             const mouseover = function(event,d) {
-              tooltip
-                .style("opacity", 1)
               d3v6.select(this)
                 .style("stroke", "black")
                 .style("opacity", 1)
             }
-            const mousemove = function(event,d) {
-              tooltip
-                .html("The exact value of<br>this cell is: " + d.value)
-                .style("left", (event.x)/2 + "px")
-                .style("top", (event.y)/2 + "px")
-            }
             const mouseleave = function(event,d) {
-              tooltip
-                .style("opacity", 0)
               d3v6.select(this)
                 .style("stroke", "none")
                 .style("opacity", 0.8)
@@ -108,10 +87,9 @@ function plot_heatmap(highlight_countries) {
                 .style("stroke", "none")
                 .style("opacity", 0.7)
               .on("mouseover", mouseover)
-              .on("mousemove", mousemove)
               .on("mouseleave", mouseleave)
               .append("title")
-              .text('frf')
+               .text(d => `correleation ${d3v6.format(".1f")(d.value)}`)
               .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
            // Add title to graph
