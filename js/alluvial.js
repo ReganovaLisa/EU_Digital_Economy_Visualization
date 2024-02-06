@@ -11,7 +11,7 @@ function plot_alluvial_years(group) {
         
     const width = document.getElementById("sixsp_svg").clientWidth;
     const height =  document.getElementById("sixsp_svg").clientHeight;
-    const margin =  {top: 30, right: 30, bottom: 60, left: 60};
+    const margin =  {top: 30, right: 30, bottom: 60, left: 30};
 
     d3v6.csv("data/alluvial.csv").then(function(data) {
         data = data.filter( d => d.joined_eu != "non_eu")
@@ -102,13 +102,13 @@ function plot_alluvial_years(group) {
             .nodeWidth(30)
             .nodePadding(1)
             .linkSort((a,b) => {if (a.information.id < b.information.id) return -1; else return 1;})
-            .size([width- margin.left, height - margin.top - margin.bottom])
+            .size([width- margin.left - margin.right, height - margin.top - margin.bottom])
             (graph);
         
 
         svg.selectAll("*").remove();
         svg.append("g").append("rect")
-              .attr("width", width - margin.left )
+              .attr("width", width - margin.left-margin.right )
               .attr("height", height - margin.top - margin.bottom)
               .attr("fill", "white")
               .attr("transform", `translate(${margin.left}, ${margin.top})`)

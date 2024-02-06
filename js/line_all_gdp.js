@@ -11,7 +11,7 @@ function plot_data_years(highlight_countries) {
         
       const width = document.getElementById("twosp_svg").clientWidth;
       const height =  document.getElementById("twosp_svg").clientHeight;
-      const margin =  {top: 30, right: 35, bottom: 30, left: 35};
+      const margin =  {top: 30, right: 30, bottom: 30, left: 30};
 
 
       d3v6.tsv(
@@ -59,7 +59,7 @@ function plot_data_years(highlight_countries) {
 
           var depthScale = d3v6.scaleOrdinal()
             .domain(filteredData.map(el => el.country))
-            .range(filteredData.map(el => {if (get_color(el.country) != "grey") return 4; else return 2;}));
+            .range(filteredData.map(el => {if (get_color(el.country) != "grey") return 4; else return 1;}));
           
 
           const step = 5

@@ -71,7 +71,7 @@ function plot_wordcloud(highlight_countries) {
                 .selectAll("text")
                   .data(words)
                 .enter().append("text")
-                  .style("font-size", function(d) { return d.size; })
+                  .style("font-size", function(d) { return 0.9*d.size; })
                   .style("fill", function(d,i) { return colorRange[i]; })
                   .attr("text-anchor", "middle")
                   .style("font-family", "Impact")

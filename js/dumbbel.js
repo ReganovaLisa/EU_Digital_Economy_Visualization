@@ -58,7 +58,7 @@ function draw_dumbbel(highlight_countries) {
 
 
 
-    var margin = ({top:20, right:100, bottom:80, left:40});
+    var margin = ({top:20, right:30, bottom:80, left:40});
 
     width =  width - margin.left - margin.right;
     height = height - margin.top - margin.bottom
@@ -80,7 +80,7 @@ function draw_dumbbel(highlight_countries) {
     
     horzScale = d3v6.scaleBand(dataset.map(d => d[0]), [0, width]).padding(0.95);
     
-    horzAxis = (e)=>e.append("g").classed("x axis", true).call(d3v6.axisBottom(horzScale)).attr("transform", `translate(0, ${height}) `).selectAll("text").style("font-size", "11pt")
+    horzAxis = (e)=>e.append("g").classed("x axis", true).call(d3v6.axisBottom(horzScale)).attr("transform", `translate(0, ${height}) `).selectAll("text").style("font-size", "8pt")
     .style("text-anchor", "end")
     .attr("dx", "-.8em")
     .attr("dy", ".15em")

@@ -46,7 +46,7 @@ function plot_heatmap(highlight_countries) {
         "../data/correlation_matrix.csv").then(function(data) {
            
         svg.append("g").append("rect")
-            .attr("width", width - margin.left)
+            .attr("width", width - margin.left - margin.right)
             .attr("height", height - margin.top - margin.bottom)
             .attr("fill", "white")
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
@@ -57,7 +57,7 @@ function plot_heatmap(highlight_countries) {
           
             // Build X scales and axis:
             const x = d3v6.scaleBand()
-              .range([ 0, width - margin.left ])
+              .range([ 0, width - margin.left- margin.right ])
               .domain(myGroups)
               .padding(0.05);
             let x_scale = svg.append("g")
@@ -74,13 +74,13 @@ function plot_heatmap(highlight_countries) {
           
             // Build Y scales and axis:
             const y = d3v6.scaleBand()
-              .range([ height - margin.top - margin.bottom, 0 ])
+              .range([ height - margin.bottom, margin.top ])
               .domain(myVars)
               .padding(0.05);
 
             let y_scale = svg.append("g")
               .style("font-size", 5)
-              .attr("transform", `translate(${margin.left}, ${margin.top})`)
+              .attr("transform", `translate(${margin.left}, ${0})`)
               .call(d3v6.axisLeft(y).tickSize(0))
             y_scale.selectAll("text")
                 .text(d => {console.log(d, name_mapping[d]); return name_mapping[d]})
@@ -89,7 +89,7 @@ function plot_heatmap(highlight_countries) {
           
             // Build color scale
             const myColor = d3v6.scaleLinear()
-              .range(["cyan", "orange"])
+              .range(["white", "orange"])
               .domain([-0,1])
           
             // Three function that change the tooltip when user hover / move / leave a cell
@@ -118,7 +118,7 @@ function plot_heatmap(highlight_countries) {
                 .style("stroke-width", 4)
                 .style("stroke", "none")
                 .style("opacity", 0.8)
-              .attr("transform", `translate(${margin.left}, ${margin.top})`)
+              .attr("transform", `translate(${margin.left}, ${0})`)
               .on("mouseover", mouseover)
               .on("mouseleave", mouseleave)
               .append("title")

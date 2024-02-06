@@ -17,7 +17,7 @@ function plot_piecharts_years(given_country, given_year) {
         
     const width = document.getElementById("fivesp_svg").clientWidth;
     const height =  document.getElementById("fivesp_svg").clientHeight;
-    const margin =  {top: 30, right: 30, bottom: 60, left: 60};
+    const margin =  {top: 30, right: 30, bottom: 60, left: 30};
 
     const outer_r = (height - margin.top - margin.bottom) / 5;
     const inner_r = outer_r * 0.4;
@@ -107,7 +107,7 @@ function plot_piecharts_years(given_country, given_year) {
               .attr("x", 0)
               .style("fill", "black")
               .text("SEX")
-              .style("font-size", "16pt")
+              //.style("font-size", "14pt")
               .attr("transform", `translate(${
                 margin.left + (width - margin.left - margin.right)/2
             }, ${margin.top + (height- margin.top - margin.bottom)*0.7})`)
@@ -118,7 +118,7 @@ function plot_piecharts_years(given_country, given_year) {
             .attr("x", 0)
             .style("fill", "black")
             .text("AGE")
-            .style("font-size", "16pt")
+            //.style("font-size", "14pt")
             .attr("transform", `translate(${
                 margin.left + (width - margin.left - margin.right)*0.23
             }, ${margin.top + (height- margin.top - margin.bottom)*0.3})`)
@@ -128,8 +128,8 @@ function plot_piecharts_years(given_country, given_year) {
             .attr("y", 0)
             .attr("x", 0)
             .style("fill", "black")
-            .text("ÉCOLE")
-            .style("font-size", "16pt")
+            .text("EDU")
+           // .style("font-size", "14pt")
             .attr("transform", `translate(${
                 margin.left + (width - margin.left - margin.right)*0.77
             }, ${margin.top + (height- margin.top - margin.bottom)*0.3})`)

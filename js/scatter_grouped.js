@@ -80,6 +80,22 @@ const highlight = function(event,d){
     .attr("r", 9)
 }
 
+svg.append("text")
+    .attr("text-anchor", "mid")
+    .attr("x", width/2 - margin.right)
+    .attr("y", height  - 10)
+    .attr('fill', 'white')
+    .text("ICT, % of GDP");
+
+
+  svg.append("text")
+    .attr("text-anchor", "mid")
+    .attr("x", -100)
+    .attr("y",  -100)
+    .attr('fill', 'red')
+    .attr("transform", "rotate(-90)")
+    .text("DII, %");
+
 // Highlight the specie that is hovered
 const doNotHighlight = function(event,d){
   d3v6.selectAll(".dot")

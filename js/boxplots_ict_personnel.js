@@ -11,7 +11,7 @@ function plot_boxplot_years(highlight_countries) {
         
     const width = document.getElementById("threesp_svg").clientWidth;
     const height =  document.getElementById("threesp_svg").clientHeight;
-    const margin =  {top: 30, right: 35, bottom: 60, left: 70};
+    const margin =  {top: 30, right: 35, bottom: 60, left: 80};
 
 
     d3v6.tsv(
