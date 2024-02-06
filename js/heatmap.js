@@ -43,7 +43,7 @@ function plot_heatmap(highlight_countries) {
     }
 
     d3v6.csv(
-        "../data/correlation_matrix.csv").then(function(data) {
+        "data/correlation_matrix.csv").then(function(data) {
            
         svg.append("g").append("rect")
             .attr("width", width - margin.left - margin.right)

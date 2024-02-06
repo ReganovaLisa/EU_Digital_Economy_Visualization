@@ -43,7 +43,7 @@ function plot_wordcloud(highlight_countries) {
     const height =  document.getElementById("wordcloud_svg").clientHeight;
     const margin =  {top: 30, right: 30, bottom: 60, left: 60};
     d3v6.csv(
-      "../data/wordcloud_data.csv").then(function(data) {
+      "data/wordcloud_data.csv").then(function(data) {
 
            
         svg.append("g").append("rect")
