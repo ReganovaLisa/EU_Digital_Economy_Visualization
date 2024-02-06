@@ -18,14 +18,16 @@ function callout(g, data){
     text.selectAll("tspan")
      .data(data)
      .join("tspan")
-     .attr("x", 20)
-     .attr("dy", (d, i)=>i*20)
+     .attr("x", 10)
+     .attr("dy", (d, i)=>i*15)
      .text((d)=>d)
+     .attr("font-size", "9pt")
     
     text.select("tspan:first-child").style("font-weight", "600")
     
     let {x,y,width,height} = text.node().getBBox();
     
+
     let endX = width+25,endY = height;
     
     path.attr("d", `M0 0 L10 -20 L${endX} -20 L${endX} ${endY} L10 ${endY} Z`)
@@ -58,7 +60,7 @@ function draw_dumbbel(highlight_countries) {
 
 
 
-    var margin = ({top:20, right:30, bottom:80, left:40});
+    var margin = ({top:20, right:50, bottom:80, left:40});
 
     width =  width - margin.left - margin.right;
     height = height - margin.top - margin.bottom
@@ -78,7 +80,7 @@ function draw_dumbbel(highlight_countries) {
 
     d3v6.json("data/data_dumbell_ordered.json").then(function(dataset){
     
-    horzScale = d3v6.scaleBand(dataset.map(d => d[0]), [0, width]).padding(0.95);
+    horzScale = d3v6.scaleBand(dataset.map(d => d[0]), [0, 0.95*width]).padding(0.95);
     
     horzAxis = (e)=>e.append("g").classed("x axis", true).call(d3v6.axisBottom(horzScale)).attr("transform", `translate(0, ${height}) `).selectAll("text").style("font-size", "8pt")
     .style("text-anchor", "end")
@@ -136,7 +138,7 @@ function draw_dumbbel(highlight_countries) {
             let x = horzScale(d[0]) + barCenter,
                 y = vertScale(d[1].males)
             popup.attr("transform", `translate(${x}, ${y}) rotate(-10)`)
-            callout(popup, [`${d[0]}(males)`, revenueFormat(d[1].males) +" %",])
+            callout(popup, [`${d[0]}`, `(males)`, revenueFormat(d[1].males) +" %",])
         })
         .on("mouseout", function(){
             popup.style("display", "none")
@@ -156,7 +158,7 @@ function draw_dumbbel(highlight_countries) {
             let x = horzScale(d[0]) + barCenter,
                 y = vertScale(d[1].females)
             popup.attr("transform", `translate(${x}, ${y}) rotate(-10)`)
-            callout(popup, [`${d[0]}(females)`, revenueFormat(d[1].females)+" %"])
+            callout(popup, [`${d[0]}`, `(females)`, revenueFormat(d[1].females)+" %"])
         })
         .on("mouseout", function(){
             popup.style("display", "none")
