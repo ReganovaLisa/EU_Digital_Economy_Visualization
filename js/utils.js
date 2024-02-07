@@ -4,16 +4,16 @@ function getFirstFloatFromString(str) {
 }
 
 const COUNTRY_GROUPS = {
-    Darkred: ["BG", "LV", "EE"],
-    DarkSlateBlue: ["BE", "DK", "DE"],
-    Chocolate: ["FI", "MT"],
+    IndianRed: ["BG", "LV", "EE"],
+    LightGreen: ["BE", "DK", "DE"],
+    DarkTurquoise: ["FI", "MT"],
     grey: [],
 }
 
 const GROUP_NAMES = {
-    Darkred: "RAISE",
-    DarkSlateBlue: "STAGNATION",
-    Chocolate: "VARIATION",
+    IndianRed: "RAISE",
+    LightGreen: "STAGNATION",
+    DarkTurquoise: "VARIATION",
     grey: "OTHER",
 }
 

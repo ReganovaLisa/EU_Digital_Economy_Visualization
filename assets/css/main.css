@@ -4012,8 +4012,9 @@ input, select, textarea {
 		height:60px;
 		bottom:40px;
 		right:40px;
-		background-color:Darkred;
+		background-color:IndianRed;
 		color:#FFF;
+		text-shadow: black 1px 1px;
 		border-radius:50px;
 		text-align:center;
 		box-shadow: 2px 2px 3px #999;
@@ -4028,8 +4029,9 @@ input, select, textarea {
 		height:60px;
 		bottom:40px;
 		right:110px;
-		background-color:darkslateblue;
+		background-color:LightGreen;
 		color:#FFF;
+		text-shadow: black 1px 1px;
 		border-radius:40px;
 		text-align:center;
 		box-shadow: 2px 2px 3px #999;
@@ -4044,8 +4046,9 @@ input, select, textarea {
 		height:60px;
 		bottom:110px;
 		right:85px;
-		background-color:chocolate;
+		background-color:DarkTurquoise;
 		color:#FFF;
+		text-shadow: black 1px 1px;
 		border-radius:40px;
 		text-align:center;
 		box-shadow: 2px 2px 3px #999;
@@ -4062,6 +4065,7 @@ input, select, textarea {
 		right:15px;
 		background-color:cornflowerblue;
 		color:#FFF;
+		text-shadow: black 1px 1px;
 		border-radius:40px;
 		text-align:center;
 		box-shadow: 2px 2px 3px #999;

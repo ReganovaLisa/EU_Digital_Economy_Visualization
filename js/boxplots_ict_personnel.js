@@ -220,7 +220,7 @@ function plot_boxplot_years(highlight_countries) {
                     .attr("stroke",  d => colorScale(d["data"]["country"]))
                     .attr("dy", "0.35em") // Adjust vertical alignment if needed
                     .style("font-size", "10px") // Adjust font size as needed
-                    .attr("transform", `translate(${margin.left}, ${margin.top})`);
+                    .attr("transform", `translate(${margin.left} , ${margin.top})`);
                 })
                 .on("mousemove", function (event,d) {
                     return tooltip.style("top", (event.pageY - 10) + "px")
@@ -261,10 +261,10 @@ function plot_boxplot_years(highlight_countries) {
                     .attr("x", d=> x(d["year"]) + mustache_len/2)
                     .attr("y", d => y(d["value"]))
                     .text(d => d.name)
-                    .attr("stroke",  d => colorScale(d.name))
+                    //.attr("stroke",  d => colorScale(d.name))
                     .attr("dy", "0.35em") // Adjust vertical alignment if needed
-                    .style("font-size", "10px") // Adjust font size as needed
-                    .attr("transform", `translate(${margin.left}, ${margin.top})`);
+                    .style("font-size", "10pt") // Adjust font size as needed
+                    .attr("transform", `translate(${margin.left + 5}, ${margin.top})`);
                     
                 
           

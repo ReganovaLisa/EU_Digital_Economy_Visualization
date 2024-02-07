@@ -85,7 +85,7 @@ function plot_alluvial_years(group) {
 
         var color = d3v6.scaleOrdinal()
           .domain(graph.nodes.map(node => node.name).filter(n => (n.length > 2 && !Object.keys(COUNTRY_GROUPS).includes(n))))
-          .range(d3v6.schemeSet3);
+          .range(d3v6.schemePaired);
         
         var my_color_link = (link) => {
             if (group_coloring) {

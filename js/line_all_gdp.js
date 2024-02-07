@@ -96,6 +96,7 @@ function plot_data_years(highlight_countries) {
             .call(d3v6.axisLeft(y))
             .style("font-size", "11pt");
 
+            filteredData = filteredData.sort((a,b) => {if(get_color(a.country)=="grey")return -1; return 1;})
 
           svg.selectAll("line_path")
           .data(filteredData)
@@ -113,6 +114,8 @@ function plot_data_years(highlight_countries) {
             .append("title")
               .text(d => `${ABBREVIATION_TO_COUNTRY[d.country]}`)
             .attr("transform", `translate(${margin.left}, ${margin.top})`);
+            console.log(filteredData)
+          filteredData = filteredData.filter(d => !("grey" == get_color(d.country) ))
 
           svg.selectAll("line_text")
             .data(filteredData)
@@ -128,9 +131,12 @@ function plot_data_years(highlight_countries) {
             .text(function(d) {
                 return d.country;
             })
-            .attr("stroke",  d => colorScale(d.country))
+            
             .attr("dy", "0.35em") // Adjust vertical alignment if needed
-            .style("font-size", "10px") // Adjust font size as needed      
+            .style("font-size", "10px") // Adjust font size as needed  
+            .attr("fill", "grey") 
+            .attr("stroke",  d => colorScale(d.country))
+            .attr("stroke-width", ".2px")   
             .attr("transform", `translate(${margin.left}, ${margin.top})`);    
         })
 

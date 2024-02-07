@@ -87,14 +87,15 @@ svg.append("text")
     .attr('fill', 'white')
     .text("ICT, % of GDP");
 
-
   svg.append("text")
     .attr("text-anchor", "mid")
-    .attr("x", -100)
-    .attr("y",  -100)
-    .attr('fill', 'red')
     .attr("transform", "rotate(-90)")
-    .text("DII, %");
+    .attr("y", margin.left*1/3)
+    .attr("x",  -height/2 )
+    .attr('fill', 'white')
+    .text("DII, %")
+
+ 
 
 // Highlight the specie that is hovered
 const doNotHighlight = function(event,d){
