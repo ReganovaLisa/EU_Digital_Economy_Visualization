@@ -1,4 +1,4 @@
-# EU_Digital_Economy_Visualization
+
 # Digital Economy and Society Visualization  
 
 This repository hosts the code for a website visualizing the **Digital Economy and Society Dataset**, accessible [here](https://reganovalisa.github.io/EU_Digital_Economy_Visualization/).  
