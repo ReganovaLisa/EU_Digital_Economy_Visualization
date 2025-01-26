@@ -6,4 +6,5 @@ Feel free to have a look!
 
 The project leverages the official Eurostat dataset, which you can find at the following link: [Eurostat - Digital Economy and Society](https://ec.europa.eu/eurostat/web/digital-economy-and-society).  
 
-  
+## A Demonstration of Interaction
+![](images/short_demo.gif)
